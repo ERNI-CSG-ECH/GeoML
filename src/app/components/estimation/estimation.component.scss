@@ -1,0 +1,28 @@
+.estimation {
+    &__image {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+    &__divider {
+        margin-top: 18px;
+    }
+    &__values {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 18px 0;
+    }
+    &__result {
+        height: 30px;
+    }
+    &__actions {
+        display: flex;
+        justify-content: center;
+        &-next {
+            border-radius: 100px;
+            width: 200px;
+            height: 48px;
+        }
+    }
+}
