@@ -33,7 +33,8 @@
                 [disabled]="selectedValue === undefined"
                 (click)="correctValue === undefined?check():next()">
           <ng-container *ngIf="correctValue === undefined">{{checkText}}</ng-container>
-          <ng-container *ngIf="correctValue !== undefined">{{nextText}}</ng-container>
+          <ng-container *ngIf="correctValue !== undefined && tries < 5">{{nextText}}</ng-container>
+          <ng-container *ngIf="tries === 5">{{resultText}}</ng-container>
         </button>
     </mat-card-actions>
 </mat-card>

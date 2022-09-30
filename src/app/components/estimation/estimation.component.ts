@@ -14,6 +14,7 @@ export class EstimationComponent implements OnInit {
 
   checkText = $localize`Prüfen`;
   nextText = $localize`Nächstes Bild`;
+  resultText = $localize`Abschliessen`;
 
   constructor(private router: Router) { }
 
@@ -31,10 +32,6 @@ export class EstimationComponent implements OnInit {
         this.correctValue = this.selectedValue - 1;
       }
       this.tries++;
-
-      if(this.tries === 5){
-        this.router.navigate(['result'])
-      }
     }
   }
 
@@ -43,6 +40,9 @@ export class EstimationComponent implements OnInit {
     this.score = undefined;
     this.correctValue = undefined;
     this.selectedValue = undefined;
-  }
 
+    if(this.tries === 5){
+      this.router.navigate(['result'])
+    }
+  }
 }
