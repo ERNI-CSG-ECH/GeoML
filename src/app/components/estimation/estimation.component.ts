@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'geoml-estimation',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./estimation.component.scss']
 })
 export class EstimationComponent implements OnInit {
+  tries = 0;
   selectedValue?: number;
   correctValue?: number;
   score?: {human: number, bot: number};
@@ -13,7 +15,7 @@ export class EstimationComponent implements OnInit {
   checkText = $localize`Prüfen`;
   nextText = $localize`Nächstes Bild`;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,11 @@ export class EstimationComponent implements OnInit {
       } else {
         this.score = {human: 8, bot: 16};
         this.correctValue = this.selectedValue - 1;
+      }
+      this.tries++;
+
+      if(this.tries === 5){
+        this.router.navigate(['result'])
       }
     }
   }

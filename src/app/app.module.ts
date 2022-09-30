@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EstimationComponent } from './components/estimation/estimation.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { ResultComponent } from './components/result/result.component';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -18,7 +19,8 @@ export const MATERIAL_MODULES = [
 @NgModule({
   declarations: [
     AppComponent,
-    EstimationComponent
+    EstimationComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
