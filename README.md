@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
-First install NodeJS (Version 16.17.1 LTS), then run 'npm i' in the folder with the 'package.json'
+First install NodeJS (Version 16.17.1 LTS [NodeJS](https://nodejs.org/en/)), then run 'npm i' in the folder with the 'package.json'
 
 ## Development server
 
