@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
 
 @Component({
   selector: 'geoml-estimation',
   templateUrl: './estimation.component.html',
   styleUrls: ['./estimation.component.scss']
 })
-export class EstimationComponent implements OnInit {
+export class EstimationComponent implements AfterViewInit {
   tries = 0;
   selectedValue?: number;
   correctValue?: number;
@@ -16,9 +17,20 @@ export class EstimationComponent implements OnInit {
   nextText = $localize`Nächstes Bild`;
   resultText = $localize`Abschliessen`;
 
-  constructor(private router: Router) { }
+  guidedTour: GuidedTour = {
+    tourId: 'tutorial',
+    steps: [
+      {selector: '.estimation__content-image', content: 'Auf dem Bild wird das Strassennetz, welches sie bewerten sollen, weiss markiert.', orientation: 'bottom'},
+      {selector: '.estimation__values-number:nth-child(3)', content: 'Wählen sie die Risikostufe aus.', orientation: 'top'},
+      {selector: '.estimation__actions-next', content: 'Bestätigen sie die Auswahl.', orientation: 'top'}
+    ]
+  };
 
-  ngOnInit(): void {
+  constructor(private router: Router, private guidedTourService: GuidedTourService, private cdr: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    this.guidedTourService.startTour(this.guidedTour);
+    this.cdr.detectChanges();
   }
 
   check(): void {

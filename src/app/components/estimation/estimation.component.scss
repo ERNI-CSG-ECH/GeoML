@@ -15,16 +15,15 @@
     line-height: 19px;
   }
 
-  img {
-    width: 95%;
-    max-width: 300px;
-  }
-
   &__content {
       display: flex;
       flex-direction: column;
       align-content: center;
       align-items: center;
+      &-image {
+        height: 300px;
+        width: 300px;
+      }
   }
 
   &__divider {

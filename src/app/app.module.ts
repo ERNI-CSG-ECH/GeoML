@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { EstimationComponent } from './components/estimation/estimation.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { ResultComponent } from './components/result/result.component';
+import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -26,9 +27,10 @@ export const MATERIAL_MODULES = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    GuidedTourModule,
     ...MATERIAL_MODULES
   ],
-  providers: [],
+  providers: [GuidedTourService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

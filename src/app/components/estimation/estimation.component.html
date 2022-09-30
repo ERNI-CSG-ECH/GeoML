@@ -5,28 +5,28 @@
       <ng-container *ngIf="correctValue !== undefined && correctValue !== selectedValue" i18n>Die richtige Einschätzung wäre Stufe {{correctValue}}</ng-container>
     </mat-card-title>
     <mat-card-content class="estimation__content">
-        <img src="../../../assets/images/guess.png">
-        <mat-divider class="estimation__divider"></mat-divider>
-        <div class="estimation__values">
-            <button mat-fab
-                    *ngFor="let number of [1,2,3,4,5]"
-                    class = "estimation__values-number"
-                    [ngClass]="{
-                      'estimation__values-selected': number === selectedValue && correctValue === undefined,
-                      'estimation__values-solution': correctValue !== undefined,
-                      'estimation__values-solution-false': correctValue !== selectedValue && number === selectedValue && correctValue !== undefined,
-                      'estimation__values-solution-correct': correctValue === selectedValue && number === selectedValue && correctValue !== undefined,
-                      'estimation__values-solution-true': correctValue !== selectedValue && number === correctValue && correctValue !== undefined
-                    }"
-                    (click)="selectedValue = number">{{number}}</button>
-        </div>
-        <div class="estimation__result">
-          <ng-container *ngIf="score !== undefined">
-            <div i18n>Ihre Punktzahl: {{score.human}}</div>
-            <div i18n>Punkte Algorithmus: {{score.bot}}</div>
-          </ng-container>
-        </div>
-        <mat-divider  class="estimation__divider"></mat-divider>
+      <img class="estimation__content-image" src="../../../assets/images/guess.png">
+      <mat-divider class="estimation__divider"></mat-divider>
+      <div class="estimation__values">
+          <button mat-fab
+                  *ngFor="let number of [1,2,3,4,5]"
+                  class = "estimation__values-number"
+                  [ngClass]="{
+                    'estimation__values-selected': number === selectedValue && correctValue === undefined,
+                    'estimation__values-solution': correctValue !== undefined,
+                    'estimation__values-solution-false': correctValue !== selectedValue && number === selectedValue && correctValue !== undefined,
+                    'estimation__values-solution-correct': correctValue === selectedValue && number === selectedValue && correctValue !== undefined,
+                    'estimation__values-solution-true': correctValue !== selectedValue && number === correctValue && correctValue !== undefined
+                  }"
+                  (click)="selectedValue = number">{{number}}</button>
+      </div>
+      <div class="estimation__result">
+        <ng-container *ngIf="score !== undefined">
+          <div i18n>Ihre Punktzahl: {{score.human}}</div>
+          <div i18n>Punkte Algorithmus: {{score.bot}}</div>
+        </ng-container>
+      </div>
+      <mat-divider  class="estimation__divider"></mat-divider>
     </mat-card-content>
     <mat-card-actions class="estimation__actions">
         <button mat-raised-button i18n class="estimation__actions-next"
