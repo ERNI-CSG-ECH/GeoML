@@ -1,28 +1,118 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .estimation {
-    &__image {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
+  max-width: 320px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  img {
+    width: 95%;
+    max-width: 300px;
+  }
+
+  &__content {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+  }
+
+  &__divider {
+      margin-top: 18px;
+      width: 100%;
+  }
+
+  &__values {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 18px 0;
+    width: 100%;
+
+    button {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 20px;
+      :disabled {
+        color: inherit;
+      }
     }
-    &__divider {
-        margin-top: 18px;
+
+    &-number  {
+      background: #FFFFFF;
+      border: 1px solid #033778;
+      color: #033778;
     }
-    &__values {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        margin: 18px 0;
+
+    &-selected {
+      background: #033778;
+      border: 1px solid #033778;
+      color: #FFFFFF;
     }
-    &__result {
-        height: 30px;
+
+    &-solution {
+      pointer-events: none;
+
+      &-correct {
+        background: rgba(90, 142, 23, 0.52);
+        border: 5px solid rgba(90, 142, 23, 0.52);
+        color: #FFFFFF;
+      }
+
+      &-false {
+        background: #FA4646;
+        border: 5px solid rgba(168, 13, 13, 0.52);
+        color: #FFFFFF;
+      }
+
+      &-true {
+        background: rgba(90, 142, 23, 0.52);
+        border: unset;
+        color: #FFFFFF;
+      }
     }
-    &__actions {
-        display: flex;
-        justify-content: center;
-        &-next {
-            border-radius: 100px;
-            width: 200px;
-            height: 48px;
-        }
+
+    ::ng-deep .mat-button-wrapper {
+      padding: unset;
     }
+  }
+
+  &__result {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 16px;
+
+    div:first-child {
+      font-weight: 600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    &-next {
+        border-radius: 100px;
+        width: 200px;
+        height: 48px;
+        background: #033778;
+        color: #FFFFFF;
+    }
+  }
+
+  ::ng-deep &.mat-card>.mat-card-actions:last-child{
+    margin-bottom: 0;
+  }
 }
