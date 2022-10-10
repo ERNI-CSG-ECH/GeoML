@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 const path = require('path');
+const fs = require('fs');
 
 app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
 app.use(cors());
@@ -18,8 +19,16 @@ let humanPoints = [];
 let botPoints = [];
 
 app.use('/', function (req, res, next) {
+  var files = fs
+    .readdirSync(path.resolve(__dirname, './resources/api/files'))
+    .filter((filename) => filename.indexOf('_result') < 0)
+    .map((filename) => filename.replace('_initial.png', ''));
+  const randomTasks = [];
+  for (let i = 0; i < 5; i++) {
+    randomTasks.push(files[Math.floor(Math.random() * files.length)]);
+  }
   sess = req.session;
-  sess.tasks = ['002439', '002440', '002442', '002452', '002462'];
+  sess.tasks = randomTasks;
   sess.correct = [4, 1, 2, 2, 1];
   sess.botGuess = [4, 1, 3, 1, 3];
   next();
@@ -55,7 +64,7 @@ app.post('/api/check', function (req, res) {
     const delta = Math.abs(req.body.guess - sess.correct.at(req.body.task));
     const botDelta = Math.abs(sess.botGuess.at(req.body.task) - sess.correct.at(req.body.task));
     humanPoints.push(delta > 4 ? 0 : Math.pow(4 - delta, 2));
-    botPoints.push(botDelta > 4 ? 0 : Math.pow(4 - botDelta, 2))
+    botPoints.push(botDelta > 4 ? 0 : Math.pow(4 - botDelta, 2));
     res.send({
       sessionId: sess.id,
       task: sess.tasks.at(req.body.task),
