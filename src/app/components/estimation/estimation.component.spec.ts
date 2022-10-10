@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GuidedTourService } from 'ngx-guided-tour';
 import { MATERIAL_MODULES } from 'src/app/app.module';
 
@@ -14,7 +15,7 @@ describe('EstimationComponent', () => {
     };
     await TestBed.configureTestingModule({
       declarations: [EstimationComponent],
-      imports: [...MATERIAL_MODULES],
+      imports: [...MATERIAL_MODULES, HttpClientTestingModule],
       providers: [{ provide: GuidedTourService, useValue: tourMock }],
     }).compileComponents();
 

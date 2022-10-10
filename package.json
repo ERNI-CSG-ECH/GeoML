@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
+    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "deploy": "ng build --configuration production & node express/server.js"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,9 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "ngx-guided-tour": "^2.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

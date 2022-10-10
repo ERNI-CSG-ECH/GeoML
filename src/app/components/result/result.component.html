@@ -10,16 +10,20 @@
     </div>
     <div>Übersicht Ihrer Resultate:</div>
     <mat-divider class="result__divider"></mat-divider>
-    <div class="result__content-score" *ngFor="let number of [1,2,3,4,5]">
-      <div class="result__content-score-card">
-        <div>
-          <div i18n>Ihre Punktzahl: {{score.human}}</div>
-          <div i18n>Punkte Algorithmus: {{score.bot}}</div>
+    <ng-container *ngIf="tasks$ | async as tasks">
+      <div class="result__content-score" *ngFor="let number of [1,2,3,4,5]; let idx=index">
+        <div class="result__content-score-card">
+          <div>
+            <div i18n>Ihre Punktzahl: {{score.human}}</div>
+            <div i18n>Punkte Algorithmus: {{score.bot}}</div>
+          </div>
+          <img #estimationImage class="estimation__content-image"
+            src="{{ apiEndpoint }}/files/{{ tasks[idx] }}_result.png" />
         </div>
-        <img src="../../../assets/images/result.png">
+        <mat-divider class="result__divider"></mat-divider>
       </div>
-      <mat-divider class="result__divider"></mat-divider>
-    </div>
+    </ng-container>
+
   </mat-card-content>
   <mat-card-actions class="result__actions">
     <a href="https://www.betterask.erni" target="_blank">Wollen Sie mehr zu dieser Challenge erfahren?</a>

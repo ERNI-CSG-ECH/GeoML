@@ -1,14 +1,20 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
+import { Observable, tap } from 'rxjs';
+import { AppSettings } from 'src/app/config/settings';
+import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'geoml-estimation',
   templateUrl: './estimation.component.html',
   styleUrls: ['./estimation.component.scss'],
 })
-export class EstimationComponent implements AfterViewInit {
-  tries = 0;
+export class EstimationComponent {
+  apiEndpoint = AppSettings.API_ENDPOINT;
+  tutorialDone = false;
+  try = 0;
+  checked = false;
   selectedValue?: number;
   correctValue?: number;
   score?: { human: number; bot: number };
@@ -34,11 +40,25 @@ export class EstimationComponent implements AfterViewInit {
     ],
   };
 
-  constructor(private router: Router, private guidedTourService: GuidedTourService, private cdr: ChangeDetectorRef) {}
+  tasks$!: Observable<string[]>;
 
-  ngAfterViewInit(): void {
-    this.guidedTourService.startTour(this.guidedTour);
-    this.cdr.detectChanges();
+  @ViewChild('estimationImage') el?: ElementRef;
+
+  constructor(
+    private router: Router,
+    private gameService: GameService,
+    private guidedTourService: GuidedTourService,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.tasks$ = this.gameService.getTasks().pipe();
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.el && !this.tutorialDone) {
+      this.guidedTourService.startTour(this.guidedTour);
+      this.tutorialDone = true;
+      this.cdr.detectChanges();
+    }
   }
 
   check(): void {
@@ -51,7 +71,7 @@ export class EstimationComponent implements AfterViewInit {
         this.score = { human: 8, bot: 16 };
         this.correctValue = this.selectedValue - 1;
       }
-      this.tries++;
+      this.checked = true;
     }
   }
 
@@ -60,8 +80,10 @@ export class EstimationComponent implements AfterViewInit {
     this.score = undefined;
     this.correctValue = undefined;
     this.selectedValue = undefined;
+    this.checked = false;
+    this.try++;
 
-    if (this.tries === 5) {
+    if (this.try === 5) {
       this.router.navigate(['result']);
     }
   }

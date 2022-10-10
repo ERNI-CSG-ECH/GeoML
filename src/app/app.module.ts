@@ -10,12 +10,20 @@ import { EstimationComponent } from './components/estimation/estimation.componen
 import { MatDividerModule } from '@angular/material/divider';
 import { ResultComponent } from './components/result/result.component';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
+import { HttpClientModule } from '@angular/common/http';
 
 export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule];
 
 @NgModule({
   declarations: [AppComponent, EstimationComponent, ResultComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, GuidedTourModule, ...MATERIAL_MODULES],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    GuidedTourModule,
+    HttpClientModule,
+    ...MATERIAL_MODULES,
+  ],
   providers: [GuidedTourService],
   bootstrap: [AppComponent],
 })
