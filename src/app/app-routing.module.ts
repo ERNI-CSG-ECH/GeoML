@@ -4,8 +4,7 @@ import { EstimationComponent } from './components/estimation/estimation.componen
 import { ResultComponent } from './components/result/result.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'game', pathMatch: 'full' },
-  { path: 'game', component: EstimationComponent },
+  { path: '', component: EstimationComponent },
   { path: 'result', component: ResultComponent },
 ];
 

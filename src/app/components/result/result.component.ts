@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppSettings } from 'src/app/config/settings';
+import { Result } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
@@ -11,15 +12,15 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class ResultComponent implements OnInit {
   apiEndpoint = AppSettings.API_ENDPOINT;
-  score: { human: number; bot: number } = {
+  mockScore: { human: number; bot: number } = {
     human: 16,
     bot: 8,
   };
 
-  tasks$!: Observable<string[]>;
+  result$!: Observable<Result>;
 
   constructor(private router: Router, private gameService: GameService) {
-    this.tasks$ = this.gameService.getTasks().pipe();
+    this.result$ = this.gameService.getResult().pipe();
   }
 
   ngOnInit(): void {}

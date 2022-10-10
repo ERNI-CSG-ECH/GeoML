@@ -1,8 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
-import { Observable, tap } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import { AppSettings } from 'src/app/config/settings';
+import { Check } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
 
 @Component({
@@ -64,13 +65,13 @@ export class EstimationComponent {
   check(): void {
     //TODO check value
     if (this.selectedValue !== undefined) {
-      if (this.selectedValue < 3) {
-        this.score = { human: 16, bot: 8 };
-        this.correctValue = this.selectedValue;
-      } else {
-        this.score = { human: 8, bot: 16 };
-        this.correctValue = this.selectedValue - 1;
-      }
+      this.gameService
+        .checkTask(this.try, this.selectedValue)
+        .pipe(take(1))
+        .subscribe((check: Check) => {
+          this.score = { human: check.humanPoints, bot: check.botPoints };
+          this.correctValue = check.correct;
+        });
       this.checked = true;
     }
   }
