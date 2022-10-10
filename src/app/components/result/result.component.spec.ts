@@ -9,10 +9,9 @@ describe('ResultComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResultComponent ],
-      imports: [...MATERIAL_MODULES]
-    })
-    .compileComponents();
+      declarations: [ResultComponent],
+      imports: [...MATERIAL_MODULES],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ResultComponent);
     component = fixture.componentInstance;

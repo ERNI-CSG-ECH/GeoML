@@ -4,12 +4,12 @@ import { EstimationComponent } from './components/estimation/estimation.componen
 import { ResultComponent } from './components/result/result.component';
 
 const routes: Routes = [
-  {path:'', component: EstimationComponent},
-  {path:'result', component: ResultComponent}
+  { path: '', component: EstimationComponent },
+  { path: 'result', component: ResultComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

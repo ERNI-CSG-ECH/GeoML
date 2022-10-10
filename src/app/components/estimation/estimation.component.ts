@@ -5,13 +5,13 @@ import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
 @Component({
   selector: 'geoml-estimation',
   templateUrl: './estimation.component.html',
-  styleUrls: ['./estimation.component.scss']
+  styleUrls: ['./estimation.component.scss'],
 })
 export class EstimationComponent implements AfterViewInit {
   tries = 0;
   selectedValue?: number;
   correctValue?: number;
-  score?: {human: number, bot: number};
+  score?: { human: number; bot: number };
 
   checkText = $localize`Prüfen`;
   nextText = $localize`Nächstes Bild`;
@@ -20,13 +20,21 @@ export class EstimationComponent implements AfterViewInit {
   guidedTour: GuidedTour = {
     tourId: 'tutorial',
     steps: [
-      {selector: '.estimation__content-image', content: 'Auf dem Bild wird das Strassennetz, welches sie bewerten sollen, weiss markiert.', orientation: 'bottom'},
-      {selector: '.estimation__values-number:nth-child(3)', content: 'Wählen sie die Risikostufe aus.', orientation: 'top'},
-      {selector: '.estimation__actions-next', content: 'Bestätigen sie die Auswahl.', orientation: 'top'}
-    ]
+      {
+        selector: '.estimation__content-image',
+        content: 'Auf dem Bild wird das Strassennetz, welches sie bewerten sollen, weiss markiert.',
+        orientation: 'bottom',
+      },
+      {
+        selector: '.estimation__values-number:nth-child(3)',
+        content: 'Wählen sie die Risikostufe aus.',
+        orientation: 'top',
+      },
+      { selector: '.estimation__actions-next', content: 'Bestätigen sie die Auswahl.', orientation: 'top' },
+    ],
   };
 
-  constructor(private router: Router, private guidedTourService: GuidedTourService, private cdr: ChangeDetectorRef) { }
+  constructor(private router: Router, private guidedTourService: GuidedTourService, private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     this.guidedTourService.startTour(this.guidedTour);
@@ -35,12 +43,12 @@ export class EstimationComponent implements AfterViewInit {
 
   check(): void {
     //TODO check value
-    if(this.selectedValue !== undefined){
-      if(this.selectedValue < 3){
-        this.score = {human: 16, bot: 8};
+    if (this.selectedValue !== undefined) {
+      if (this.selectedValue < 3) {
+        this.score = { human: 16, bot: 8 };
         this.correctValue = this.selectedValue;
       } else {
-        this.score = {human: 8, bot: 16};
+        this.score = { human: 8, bot: 16 };
         this.correctValue = this.selectedValue - 1;
       }
       this.tries++;
@@ -53,8 +61,8 @@ export class EstimationComponent implements AfterViewInit {
     this.correctValue = undefined;
     this.selectedValue = undefined;
 
-    if(this.tries === 5){
-      this.router.navigate(['result'])
+    if (this.tries === 5) {
+      this.router.navigate(['result']);
     }
   }
 }

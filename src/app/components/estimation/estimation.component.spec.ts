@@ -9,10 +9,9 @@ describe('EstimationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EstimationComponent ],
-      imports: [...MATERIAL_MODULES]
-    })
-    .compileComponents();
+      declarations: [EstimationComponent],
+      imports: [...MATERIAL_MODULES],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EstimationComponent);
     component = fixture.componentInstance;
