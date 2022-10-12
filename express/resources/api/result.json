@@ -1,0 +1,927 @@
+[
+    {
+        "name": "000003",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000013",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000014",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000015",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "000023",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "000025",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "000030",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000041",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000042",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "000048",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000051",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000066",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000088",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "000104",
+        "correct": "5",
+        "botGuess": "1"
+    },
+    {
+        "name": "000148",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000156",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "000163",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000187",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "000192",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "000201",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "000216",
+        "correct": "2",
+        "botGuess": "3"
+    },
+    {
+        "name": "000217",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000291",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000308",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "000333",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "000342",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000386",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000389",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000409",
+        "correct": "3",
+        "botGuess": "1"
+    },
+    {
+        "name": "000416",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000441",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "000470",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "000481",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "000503",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "000506",
+        "correct": "2",
+        "botGuess": "3"
+    },
+    {
+        "name": "000513",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000528",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "000530",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000531",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000546",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "000560",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000565",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000576",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000577",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000598",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "000603",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "000606",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000618",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000644",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "000651",
+        "correct": "1",
+        "botGuess": "2"
+    },
+    {
+        "name": "000655",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000656",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "000657",
+        "correct": "2",
+        "botGuess": "3"
+    },
+    {
+        "name": "000662",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000665",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000739",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000752",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000759",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000775",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "000801",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000816",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000818",
+        "correct": "5",
+        "botGuess": "4"
+    },
+    {
+        "name": "000824",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000856",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "000869",
+        "correct": "1",
+        "botGuess": "3"
+    },
+    {
+        "name": "000874",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "000877",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "000893",
+        "correct": "2",
+        "botGuess": "3"
+    },
+    {
+        "name": "000896",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "000898",
+        "correct": "2",
+        "botGuess": "3"
+    },
+    {
+        "name": "000912",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "000915",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "000933",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "000939",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "000948",
+        "correct": "1",
+        "botGuess": "2"
+    },
+    {
+        "name": "000949",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "000950",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "000963",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "000975",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001002",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "001013",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001018",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "001022",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001032",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001057",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "001064",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001075",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001102",
+        "correct": "1",
+        "botGuess": "2"
+    },
+    {
+        "name": "001110",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "001121",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "001154",
+        "correct": "5",
+        "botGuess": "4"
+    },
+    {
+        "name": "001182",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "001186",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001189",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001215",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001216",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001222",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001248",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001254",
+        "correct": "5",
+        "botGuess": "1"
+    },
+    {
+        "name": "001255",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "001284",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001305",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001315",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001321",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "001329",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001391",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001394",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001395",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001403",
+        "correct": "1",
+        "botGuess": "2"
+    },
+    {
+        "name": "001443",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001458",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001468",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001483",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001486",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "001493",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "001503",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "001508",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001565",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001581",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "001600",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001620",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "001627",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001634",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001639",
+        "correct": "1",
+        "botGuess": "3"
+    },
+    {
+        "name": "001646",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001650",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "001661",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001680",
+        "correct": "4",
+        "botGuess": "5"
+    },
+    {
+        "name": "001688",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001701",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001706",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001711",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001729",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "001753",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "001769",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "001791",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001800",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "001805",
+        "correct": "4",
+        "botGuess": "2"
+    },
+    {
+        "name": "001810",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "001822",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "001840",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "001847",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "001848",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "001859",
+        "correct": "1",
+        "botGuess": "4"
+    },
+    {
+        "name": "001885",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "001887",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001918",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001928",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "001962",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "001963",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "001968",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "002002",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "002032",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002045",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "002046",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "002050",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002059",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002065",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "002067",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "002097",
+        "correct": "1",
+        "botGuess": "3"
+    },
+    {
+        "name": "002125",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "002162",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "002168",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "002193",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "002199",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002204",
+        "correct": "1",
+        "botGuess": "2"
+    },
+    {
+        "name": "002221",
+        "correct": "3",
+        "botGuess": "2"
+    },
+    {
+        "name": "002245",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "002247",
+        "correct": "4",
+        "botGuess": "3"
+    },
+    {
+        "name": "002253",
+        "correct": "3",
+        "botGuess": "4"
+    },
+    {
+        "name": "002280",
+        "correct": "4",
+        "botGuess": "1"
+    },
+    {
+        "name": "002286",
+        "correct": "1",
+        "botGuess": "3"
+    },
+    {
+        "name": "002293",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002296",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "002343",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002345",
+        "correct": "1",
+        "botGuess": "1"
+    },
+    {
+        "name": "002347",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002389",
+        "correct": "1",
+        "botGuess": "3"
+    },
+    {
+        "name": "002391",
+        "correct": "3",
+        "botGuess": "3"
+    },
+    {
+        "name": "002424",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002431",
+        "correct": "2",
+        "botGuess": "2"
+    },
+    {
+        "name": "002439",
+        "correct": "4",
+        "botGuess": "4"
+    },
+    {
+        "name": "002442",
+        "correct": "2",
+        "botGuess": "3"
+    },
+    {
+        "name": "002452",
+        "correct": "2",
+        "botGuess": "1"
+    },
+    {
+        "name": "002462",
+        "correct": "1",
+        "botGuess": "3"
+    }
+]
