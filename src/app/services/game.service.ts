@@ -8,6 +8,8 @@ import { Check, Result } from '../model/game';
   providedIn: 'root',
 })
 export class GameService {
+  firstRound = true;
+
   constructor(private http: HttpClient) {}
 
   getTasks(): Observable<string[]> {
@@ -22,6 +24,7 @@ export class GameService {
   }
 
   getResult(): Observable<Result> {
+    this.firstRound = false;
     return this.http
       .get<{ tasks: number[]; correct: number[]; botPoints: number[]; humanPoints: number[] }>(
         `${AppSettings.API_ENDPOINT}/result`

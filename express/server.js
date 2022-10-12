@@ -23,38 +23,37 @@ let results = {};
 let randomTasks = [];
 
 app.use('/', async function (req, res, next) {
-  if (randomTasks.length !== 5) {
-    resultsJson.forEach((result) => {
-      results[result.name] = { correct: result.correct, botGuess: result.botGuess };
-    });
+  try {
+    if (randomTasks.length !== 5) {
+      resultsJson.forEach((result) => {
+        results[result.name] = { correct: result.correct, botGuess: result.botGuess };
+      });
 
-    var files = fs
-      .readdirSync(path.resolve(__dirname, './resources/api/files'))
-      .filter((filename) => filename.indexOf('_result') < 0)
-      .map((filename) => filename.replace('_initial.png', ''))
-      .filter((task) => results[task] !== null);
-    for (let i = 0; i < 5; i++) {
-      randomTasks.push(files[Math.floor(Math.random() * files.length)]);
+      for (let i = 0; i < 5; i++) {
+        randomTasks.push(Object.keys(results)[Math.floor(Math.random() * Object.keys(results).length)]);
+      }
+      sess = req.session;
+      sess.tasks = randomTasks;
+      sess.correct = [
+        results[randomTasks[0]].correct,
+        results[randomTasks[1]].correct,
+        results[randomTasks[2]].correct,
+        results[randomTasks[3]].correct,
+        results[randomTasks[4]].correct,
+      ];
+      sess.botGuess = [
+        results[randomTasks[0]].botGuess,
+        results[randomTasks[1]].botGuess,
+        results[randomTasks[2]].botGuess,
+        results[randomTasks[3]].botGuess,
+        results[randomTasks[4]].botGuess,
+      ];
     }
-    sess = req.session;
-    sess.tasks = randomTasks;
-    sess.correct = [
-      results[randomTasks[0]].correct,
-      results[randomTasks[1]].correct,
-      results[randomTasks[2]].correct,
-      results[randomTasks[3]].correct,
-      results[randomTasks[4]].correct,
-    ];
-    sess.botGuess = [
-      results[randomTasks[0]].botGuess,
-      results[randomTasks[1]].botGuess,
-      results[randomTasks[2]].botGuess,
-      results[randomTasks[3]].botGuess,
-      results[randomTasks[4]].botGuess,
-    ];
-  }
 
-  next();
+    next();
+  } catch (ex) {
+    res.send('Error: ' + ex + '\n' + randomTasks + '\n' + JSON.stringify(results));
+  }
 });
 
 app.get('/', function (req) {

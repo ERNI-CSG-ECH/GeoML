@@ -55,7 +55,7 @@ export class EstimationComponent {
   }
 
   ngAfterViewChecked(): void {
-    if (this.el && !this.tutorialDone) {
+    if (this.el && !this.tutorialDone && this.gameService.firstRound) {
       this.guidedTourService.startTour(this.guidedTour);
       this.tutorialDone = true;
       this.cdr.detectChanges();
