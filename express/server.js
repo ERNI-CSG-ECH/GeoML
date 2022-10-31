@@ -6,8 +6,7 @@ const app = express();
 const port = 4000;
 const path = require('path');
 const fs = require('fs');
-
-const resultsJson = require('./resources/api/result.json');
+const parse = require('csv-parse').parse;
 
 app.use(session({ secret: 'ssshhhhh', saveUninitialized: true, resave: false }));
 app.use(cors());
@@ -22,38 +21,54 @@ let botPoints = [];
 let results = {};
 let randomTasks = [];
 
-app.use('/', async function (req, res, next) {
-  try {
-    if (randomTasks.length !== 5) {
-      resultsJson.forEach((result) => {
-        results[result.name] = { correct: result.correct, botGuess: result.botGuess };
-      });
-
-      for (let i = 0; i < 5; i++) {
-        randomTasks.push(Object.keys(results)[Math.floor(Math.random() * Object.keys(results).length)]);
-      }
-      sess = req.session;
-      sess.tasks = randomTasks;
-      sess.correct = [
-        results[randomTasks[0]].correct,
-        results[randomTasks[1]].correct,
-        results[randomTasks[2]].correct,
-        results[randomTasks[3]].correct,
-        results[randomTasks[4]].correct,
-      ];
-      sess.botGuess = [
-        results[randomTasks[0]].botGuess,
-        results[randomTasks[1]].botGuess,
-        results[randomTasks[2]].botGuess,
-        results[randomTasks[3]].botGuess,
-        results[randomTasks[4]].botGuess,
-      ];
+const loadResultTable = function (req, res) {
+  const data = fs.readFileSync(path.resolve('express/resources/data/result_table.csv'));
+  parse(data, (err, records) => {
+    if (err) {
+      console.error(err);
+      return res.status(400).json({ success: false, message: 'An error occurred' });
     }
 
-    next();
-  } catch (ex) {
-    res.send('Error: ' + ex + '\n' + randomTasks + '\n' + JSON.stringify(results));
+    const attributes = records[0][0].split(';');
+    for (let i = 1; i < records.length; i++) {
+      const splitRecord = records[i][0].split(';');
+      const mapped = {};
+      for (let j = 0; j < attributes.length; j++) {
+        mapped[attributes[j]] = splitRecord[j];
+      }
+      results[mapped.ID] = { correct: parseInt(mapped.Label) + 1, botGuess: parseInt(mapped.Guess) };
+    }
+
+    for (let i = 0; i < 5; i++) {
+      randomTasks.push(Object.keys(results)[Math.floor(Math.random() * Object.keys(results).length)]);
+    }
+    sess = req.session;
+    sess.tasks = randomTasks;
+    sess.correct = [
+      results[randomTasks[0]].correct,
+      results[randomTasks[1]].correct,
+      results[randomTasks[2]].correct,
+      results[randomTasks[3]].correct,
+      results[randomTasks[4]].correct,
+    ];
+    sess.botGuess = [
+      results[randomTasks[0]].botGuess,
+      results[randomTasks[1]].botGuess,
+      results[randomTasks[2]].botGuess,
+      results[randomTasks[3]].botGuess,
+      results[randomTasks[4]].botGuess,
+    ];
+
+    return;
+  });
+};
+
+app.use('/', async function (req, res, next) {
+  if (randomTasks.length !== 5) {
+    loadResultTable(req, res, next);
   }
+
+  next();
 });
 
 app.get('/', function (req) {
