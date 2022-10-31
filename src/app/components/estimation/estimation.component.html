@@ -1,6 +1,7 @@
 <mat-card class="estimation">
   <div *ngIf="tasks$ | async as tasks" class="estimation__progress">
-    <span *ngFor="let task of tasks; let idx = index" class="estimation__progress-step" [ngClass]="{'active': idx <= try}"></span>
+    <span *ngFor="let task of tasks; let idx = index" class="estimation__progress-step"
+      [ngClass]="{'active': idx <= try}"></span>
   </div>
   <mat-card-title class="estimation__title">
     <ng-container *ngIf="correctValue === undefined" i18n>Wie hoch schätzen sie das Risiko?</ng-container>

@@ -127,6 +127,7 @@ app.get('/api/result', function (req, res) {
       sessionId: sess.id,
       tasks: sess.tasks,
       correct: sess.correct,
+      botGuess: sess.botGuess,
       botPoints,
       humanPoints,
     });
