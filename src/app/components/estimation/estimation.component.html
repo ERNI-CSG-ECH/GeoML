@@ -11,7 +11,8 @@
       src="{{ apiEndpoint }}/files/{{ tasks[try] }}_{{ checked ? 'result' : 'initial' }}.png" />
     <mat-divider class="estimation__divider"></mat-divider>
     <div class="estimation__values">
-      <button mat-fab *ngFor="let task of tasks; let idx = index" class="estimation__values-number" [ngClass]="{
+      <div class="estimation__values-button-container" *ngFor="let task of tasks; let idx = index">
+        <button mat-fab class="estimation__values-button" [ngClass]="{
           'estimation__values-selected': idx + 1 === selectedValue && correctValue === undefined,
           'estimation__values-solution': correctValue !== undefined,
           'estimation__values-solution-false':
@@ -21,8 +22,12 @@
           'estimation__values-solution-true':
             correctValue !== selectedValue && idx + 1 === correctValue && correctValue !== undefined
         }" (click)="selectedValue = idx + 1">
-        {{ idx + 1 }}
-      </button>
+          {{ idx + 1 }}
+        </button>
+        <span *ngIf="correctValue!==undefined&&idx + 1===botValue" class="estimation__values-button-badge" >
+          <svg-icon name="bot"></svg-icon>
+        </span>
+      </div>
     </div>
     <div class="estimation__result">
       <ng-container *ngIf="score !== undefined">

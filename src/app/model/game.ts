@@ -7,6 +7,7 @@ export interface Result {
 export interface Check {
   task: number;
   correct: number;
+  botGuess: number;
   botPoints: number;
   humanPoints: number;
 }

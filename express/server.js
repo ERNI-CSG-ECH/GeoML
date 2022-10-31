@@ -36,7 +36,7 @@ const loadResultTable = function (req, res) {
       for (let j = 0; j < attributes.length; j++) {
         mapped[attributes[j]] = splitRecord[j];
       }
-      results[mapped.ID] = { correct: parseInt(mapped.Label) + 1, botGuess: parseInt(mapped.Guess) };
+      results[mapped.ID] = { correct: parseInt(mapped.Label) + 1, botGuess: parseInt(mapped.Guess) + 1 };
     }
 
     for (let i = 0; i < 5; i++) {
@@ -111,6 +111,7 @@ app.post('/api/check', function (req, res) {
       sessionId: sess.id,
       task: sess.tasks.at(req.body.task),
       correct: parseInt(sess.correct.at(req.body.task)),
+      botGuess: sess.botGuess.at(req.body.task),
       botPoints: botPoints.at(req.body.task),
       humanPoints: humanPoints.at(req.body.task),
     });

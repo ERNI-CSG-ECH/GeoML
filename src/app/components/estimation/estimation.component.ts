@@ -18,7 +18,8 @@ export class EstimationComponent {
   checked = false;
   selectedValue?: number;
   correctValue?: number;
-  score?: { human: number; bot: number };
+  botValue?: number;
+  score?: { human: number; bot: number; botGuess: number };
 
   checkText = $localize`Prüfen`;
   nextText = $localize`Nächstes Bild`;
@@ -69,8 +70,9 @@ export class EstimationComponent {
         .checkTask(this.try, this.selectedValue)
         .pipe(take(1))
         .subscribe((check: Check) => {
-          this.score = { human: check.humanPoints, bot: check.botPoints };
+          this.score = { human: check.humanPoints, bot: check.botPoints, botGuess: check.botGuess };
           this.correctValue = check.correct;
+          this.botValue = check.botGuess;
         });
       this.checked = true;
     }

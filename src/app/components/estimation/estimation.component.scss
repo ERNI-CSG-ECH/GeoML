@@ -49,10 +49,20 @@
       }
     }
 
-    &-number {
+    &-button {
       background: #FFFFFF;
       border: 1px solid #033778;
       color: #033778;
+
+      &-container {
+        position: relative;
+      }
+
+      &-badge {
+        position: absolute;
+        left: 27px;
+        bottom: 27px;
+      }
     }
 
     &-selected {

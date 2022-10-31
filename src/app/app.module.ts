@@ -11,8 +11,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ResultComponent } from './components/result/result.component';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { HttpClientModule } from '@angular/common/http';
+import { MatBadgeModule } from '@angular/material/badge';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
-export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule];
+export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule, MatBadgeModule];
 
 @NgModule({
   declarations: [AppComponent, EstimationComponent, ResultComponent],
@@ -22,6 +24,7 @@ export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModul
     BrowserAnimationsModule,
     GuidedTourModule,
     HttpClientModule,
+    AngularSvgIconModule.forRoot(),
     ...MATERIAL_MODULES,
   ],
   providers: [GuidedTourService],
