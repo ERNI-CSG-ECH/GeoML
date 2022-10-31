@@ -1,4 +1,7 @@
 <mat-card class="estimation">
+  <div *ngIf="tasks$ | async as tasks" class="estimation__progress">
+    <span *ngFor="let task of tasks; let idx = index" class="estimation__progress-step" [ngClass]="{'active': idx <= try}"></span>
+  </div>
   <mat-card-title class="estimation__title">
     <ng-container *ngIf="correctValue === undefined" i18n>Wie hoch schätzen sie das Risiko?</ng-container>
     <ng-container *ngIf="correctValue !== undefined && correctValue === selectedValue" i18n>Ihre Einschätzung war
@@ -24,7 +27,7 @@
         }" (click)="selectedValue = idx + 1">
           {{ idx + 1 }}
         </button>
-        <span *ngIf="correctValue!==undefined&&idx + 1===botValue" class="estimation__values-button-badge" >
+        <span *ngIf="correctValue!==undefined&&idx + 1===botValue" class="estimation__values-button-badge">
           <svg-icon name="bot"></svg-icon>
         </span>
       </div>

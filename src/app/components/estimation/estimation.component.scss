@@ -9,6 +9,26 @@
 .estimation {
   max-width: 320px;
 
+  &__progress {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 0;
+
+    &-step {
+      background-color: #00AADB;
+      border-radius: 20px;
+      height: 6px;
+      width: 25px;
+      margin: 0 5px;
+
+      &.active {
+
+        background-color: #033778;
+      }
+    }
+  }
+
   &__title {
     font-weight: 600;
     font-size: 16px;
