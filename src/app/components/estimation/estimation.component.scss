@@ -1,9 +1,13 @@
+@use '../../../styles.scss';
+
 :host {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+  //color: mat-color($geoml-primary, default);
 }
 
 .estimation {
@@ -132,11 +136,20 @@
 
   &__actions {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+
+    &-points {
+      div {
+        width: 50px;
+        //padding-right: 12px;
+      }
+      display: flex;
+      flex-direction: row;
+    }
 
     &-next {
       border-radius: 100px;
-      width: 200px;
+      width: 148px;
       height: 48px;
       background: #033778;
       color: #FFFFFF;

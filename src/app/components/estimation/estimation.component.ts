@@ -19,7 +19,11 @@ export class EstimationComponent {
   selectedValue?: number;
   correctValue?: number;
   botValue?: number;
-  score?: { human: number; bot: number; botGuess: number };
+  score: { human: number; bot: number; botGuess?: number } = {
+    human: 0,
+    bot: 0,
+  };
+  pointGain?: number;
 
   checkText = $localize`Prüfen`;
   nextText = $localize`Nächstes Bild`;
@@ -57,7 +61,7 @@ export class EstimationComponent {
 
   ngAfterViewChecked(): void {
     if (this.el && !this.tutorialDone && this.gameService.firstRound) {
-      this.guidedTourService.startTour(this.guidedTour);
+     // this.guidedTourService.startTour(this.guidedTour);
       this.tutorialDone = true;
       this.cdr.detectChanges();
     }
@@ -70,9 +74,13 @@ export class EstimationComponent {
         .checkTask(this.try, this.selectedValue)
         .pipe(take(1))
         .subscribe((check: Check) => {
+          this.pointGain = check.humanPoints - this.score.human;
           this.score = { human: check.humanPoints, bot: check.botPoints, botGuess: check.botGuess };
           this.correctValue = check.correct;
           this.botValue = check.botGuess;
+          setTimeout(()=>{
+            this.pointGain = undefined
+          }, 3000);
         });
       this.checked = true;
     }
@@ -80,7 +88,10 @@ export class EstimationComponent {
 
   next(): void {
     //TODO next image
-    this.score = undefined;
+    this.score = {
+      human: 0,
+      bot: 0,
+    };
     this.correctValue = undefined;
     this.selectedValue = undefined;
     this.checked = false;
