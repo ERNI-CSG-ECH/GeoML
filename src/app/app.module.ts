@@ -12,7 +12,6 @@ import { ResultComponent } from './components/result/result.component';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule];
 

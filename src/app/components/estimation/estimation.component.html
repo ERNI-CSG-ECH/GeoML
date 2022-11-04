@@ -3,25 +3,30 @@
     <span *ngFor="let task of tasks; let idx = index" class="estimation__progress-step"
       [ngClass]="{'active': idx <= try}"></span>
   </div>
-  <mat-card-title class="estimation__title">
-    <ng-container *ngIf="correctValue === undefined" i18n>Wie hoch schätzen sie das Risiko?</ng-container>
-    <ng-container *ngIf="correctValue !== undefined && correctValue === selectedValue" i18n>Ihre Einschätzung war
-      richtig</ng-container>
-    <ng-container *ngIf="correctValue !== undefined && correctValue !== selectedValue" i18n>Die richtige Einschätzung
-      wäre Stufe {{ correctValue }}</ng-container>
+  <mat-card-title class="estimation__title" [ngClass]="{'checked': checked}">
+    <span *ngIf="correctValue === undefined" i18n>Wie hoch schätzen Sie hier das Risiko ein?</span>
+    <span *ngIf="correctValue !== undefined && correctValue === selectedValue" i18n>Richtig!</span>
+    <span *ngIf="correctValue !== undefined && correctValue !== selectedValue" i18n>Leider Falsch!</span>
   </mat-card-title>
   <mat-card-content *ngIf="tasks$ | async as tasks" class="estimation__content">
     <div class="estimation__content-image">
       <div [ngClass]="{'cropped-result': checked,'cropped-initial': !checked}">
         <img #estimationImage src="{{ apiEndpoint }}/files/{{ tasks[try] }}_{{ checked ? 'result' : 'initial' }}.png" />
       </div>
-      <div *ngIf="checked" class="estimation__content-result" style="--correctValue: {{correctValue}}">
-        <svg-icon class="estimation__content-result-indicator" name="arrow"></svg-icon>
+      <div *ngIf="checked" class="estimation__content-result-container">
+        <div class="estimation__content-result" style="--correctValue: {{correctValue}}">
+          <svg-icon class="estimation__content-result-indicator" name="arrow"></svg-icon>
+        </div>
+        <button mat-icon-button>
+          <svg-icon name="info"></svg-icon>
+        </button>
       </div>
     </div>
     <div *ngIf="checked" class="estimation__bot-comment">
       <svg-icon name="bot"></svg-icon>
       <div class="estimation__bot-comment-bubble">Diesmal bin ich richtig gelegen</div>
+    </div>
+    <div *ngIf="!checked" class="estimation__scale-text"><span i18n>sehr gering</span><span i18n>sehr hoch</span>
     </div>
     <div class="estimation__values">
       <div class="estimation__values-button-container" *ngFor="let task of tasks; let idx = index">
@@ -42,7 +47,6 @@
         </span>
       </div>
     </div>
-    <mat-divider class="estimation__divider"></mat-divider>
   </mat-card-content>
   <mat-card-actions class="estimation__actions">
     <div *ngIf="{lastCheck: this.lastCheck$ | async} as data" class="estimation__actions-points">
@@ -50,7 +54,7 @@
       <h2>{{ humanPoints === undefined ? 0:humanPoints }}</h2>
       <span *ngIf="data.lastCheck" class="estimation__actions-points-update"
         [ngClass]="{'hidden': !this.showPointGain}">+{{
-          this.pointGain }}</span>
+        this.pointGain }}</span>
     </div>
     <button *ngIf="selectedValue !== undefined" mat-raised-button class="estimation__actions-next"
       [ngClass]="{'check': correctValue===undefined}" (click)="correctValue === undefined ? check() : next()">
