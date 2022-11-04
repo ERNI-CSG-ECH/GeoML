@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+$light-contrast: #FFFFFF;
+$dark-contrast: #033778;
+
+$geoml-palette: (
+  100: #66CCE9,
+  400: #00AADB,
+  700: #033778,
+  A300: #00BF78,
+  A500: #008A57,
+  contrast: (100: $light-contrast, 700: $light-contrast,
+    A300: #E85757,
+    A500: #BF4848)
+);
+
+$geoml-primary: mat.define-palette($geoml-palette, 400);
+$geoml-accent: mat.define-palette($geoml-palette, A500, A300);

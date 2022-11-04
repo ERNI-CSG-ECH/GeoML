@@ -1,4 +1,5 @@
-@use '../../../styles.scss';
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
 
 :host {
   display: flex;
@@ -6,12 +7,11 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-
-  //color: mat-color($geoml-primary, default);
 }
 
 .estimation {
   max-width: 320px;
+  color: map.get($geoml-primary, 700);
 
   &__progress {
     display: flex;
@@ -45,8 +45,54 @@
     align-items: center;
 
     &-image {
-      height: 300px;
-      width: 300px;
+      display: flex;
+      flex-direction: row;
+
+      .cropped {
+        overflow: hidden;
+        border-radius: 15px;
+
+        &-initial {
+          @extend .cropped;
+          width: 335px;
+          height: 335px;
+
+          img {
+            margin: -27px 0px 0px -93px;
+            width: 520px;
+          }
+        }
+
+        &-result {
+          @extend .cropped;
+          width: 285px;
+          height: 285px;
+
+          img {
+            margin: -27px 0px 0px -93px;
+            width: 520px;
+          }
+        }
+      }
+    }
+
+    &-result {
+      position: relative;
+      background: rgb(3, 55, 120);
+      background: linear-gradient(180deg, rgba(3, 55, 120, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      border-radius: 20px;
+      margin: 0 18px 0 20px;
+      width: 13px;
+      height: 265px;
+
+      &-indicator {
+        box-sizing: border-box;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        left: 5px;
+        top: calc((5 - var(--correctValue)) * 55px) ;
+      }
     }
   }
 
@@ -143,6 +189,7 @@
         width: 50px;
         //padding-right: 12px;
       }
+
       display: flex;
       flex-direction: row;
     }
