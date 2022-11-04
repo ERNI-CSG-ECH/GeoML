@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor(private iconReg: SvgIconRegistryService) {
     this.iconReg.loadSvg('../../../assets/icons/bot.svg', 'bot')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/bot-pin.svg', 'bot-pin')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/arrow.svg', 'arrow')?.pipe(take(1)).subscribe();
   }
 }

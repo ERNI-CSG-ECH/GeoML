@@ -16,11 +16,13 @@
         <img #estimationImage src="{{ apiEndpoint }}/files/{{ tasks[try] }}_{{ checked ? 'result' : 'initial' }}.png" />
       </div>
       <div *ngIf="checked" class="estimation__content-result" style="--correctValue: {{correctValue}}">
-        <svg-icon class="estimation__content-result-indicator" name="arrow"></svg-icon >
+        <svg-icon class="estimation__content-result-indicator" name="arrow"></svg-icon>
       </div>
     </div>
-<!--     <span *ngIf="checked" class="estimation__bot-comment"><svg-icon name="bot"></svg-icon> Diesmal bin ich richtig gelegen</span> -->
-    <mat-divider class="estimation__divider"></mat-divider>
+    <div *ngIf="checked" class="estimation__bot-comment">
+      <svg-icon name="bot"></svg-icon>
+      <div class="estimation__bot-comment-bubble">Diesmal bin ich richtig gelegen</div>
+    </div>
     <div class="estimation__values">
       <div class="estimation__values-button-container" *ngFor="let task of tasks; let idx = index">
         <button mat-fab class="estimation__values-button" [ngClass]="{
@@ -36,7 +38,7 @@
           {{ idx + 1 }}
         </button>
         <span *ngIf="correctValue!==undefined&&idx + 1===botValue" class="estimation__values-button-badge">
-          <svg-icon name="bot"></svg-icon>
+          <svg-icon name="bot-pin"></svg-icon>
         </span>
       </div>
     </div>

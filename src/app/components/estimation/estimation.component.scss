@@ -10,7 +10,7 @@
 }
 
 .estimation {
-  max-width: 320px;
+  max-width: 340px;
   color: map.get($geoml-primary, 700);
 
   &__progress {
@@ -20,14 +20,14 @@
     margin: 20px 0;
 
     &-step {
-      background-color: #00AADB;
+      background-color: map.get($geoml-primary, 300);
       border-radius: 20px;
       height: 6px;
       width: 25px;
       margin: 0 5px;
 
       &.active {
-        background-color: #033778;
+        background-color: map.get($geoml-primary, 400);
       }
     }
   }
@@ -82,7 +82,7 @@
       background: linear-gradient(180deg, rgba(3, 55, 120, 1) 0%, rgba(255, 255, 255, 1) 100%);
       border-radius: 20px;
       margin: 0 18px 0 20px;
-      width: 13px;
+      width: 12px;
       height: 265px;
 
       &-indicator {
@@ -91,7 +91,38 @@
         width: 25px;
         height: 25px;
         left: 5px;
-        top: calc((5 - var(--correctValue)) * 55px) ;
+        top: calc((5 - var(--correctValue)) * 55px);
+      }
+    }
+  }
+
+  &__bot-comment {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 6px 0;
+
+    &-bubble {
+      position: relative;
+      font-weight: 600;
+      background-color: map.get($geoml-primary, 100);
+      border-radius: 36px;
+      padding: 4px 10px;
+      margin: 5px;
+
+      &:after {    content: "";
+        position: absolute;
+        left: -3px;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 10px solid map.get($geoml-primary, 100);
+        transform: rotate(45deg);
+        clear: both;
       }
     }
   }
