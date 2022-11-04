@@ -11,6 +11,7 @@
 
 .estimation {
   max-width: 340px;
+  min-height: 575px;
   color: map.get($geoml-primary, 700);
 
   &__progress {
@@ -112,7 +113,8 @@
       padding: 4px 10px;
       margin: 5px;
 
-      &:after {    content: "";
+      &:after {
+        content: "";
         position: absolute;
         left: -3px;
         top: 20px;
@@ -127,11 +129,6 @@
     }
   }
 
-  &__divider {
-    margin-top: 18px;
-    width: 100%;
-  }
-
   &__values {
     display: flex;
     flex-direction: row;
@@ -140,7 +137,7 @@
     width: 100%;
 
     button {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 24px;
       line-height: 20px;
 
@@ -150,9 +147,12 @@
     }
 
     &-button {
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0px 0px 3px map.get($geoml-primary, 300));
       background: #FFFFFF;
-      border: 1px solid #033778;
-      color: #033778;
+      box-shadow: unset !important;
+      color: map.get($geoml-primary, 700);
 
       &-container {
         position: relative;
@@ -160,14 +160,15 @@
 
       &-badge {
         position: absolute;
-        left: 27px;
-        bottom: 27px;
+        left: 22px;
+        bottom: 22px;
       }
     }
 
     &-selected {
-      background: #033778;
-      border: 1px solid #033778;
+      filter: unset;
+      background: map.get($geoml-primary, 300);
+      border: 1px solid map.get($geoml-primary, 300);
       color: #FFFFFF;
     }
 
@@ -175,19 +176,22 @@
       pointer-events: none;
 
       &-correct {
-        background: rgba(90, 142, 23, 0.52);
-        border: 5px solid rgba(90, 142, 23, 0.52);
+        filter: unset;
+        background: map.get($geoml-primary, A300);
+        border: 5px solid map.get($geoml-primary, A500);
         color: #FFFFFF;
       }
 
       &-false {
-        background: #FA4646;
-        border: 5px solid rgba(168, 13, 13, 0.52);
+        filter: unset;
+        background: map.get(map.get($geoml-primary, contrast), A300);
+        border: 5px solid map.get(map.get($geoml-primary, contrast), A500);
         color: #FFFFFF;
       }
 
       &-true {
-        background: rgba(90, 142, 23, 0.52);
+        filter: unset;
+        background: map.get($geoml-primary, A300);
         border: unset;
         color: #FFFFFF;
       }
@@ -199,6 +203,7 @@
   }
 
   &__result {
+    margin-top: 18px;
     height: 30px;
     display: flex;
     flex-direction: row;
@@ -216,21 +221,50 @@
     justify-content: space-between;
 
     &-points {
-      div {
-        width: 50px;
-        //padding-right: 12px;
-      }
-
       display: flex;
       flex-direction: row;
+
+      div {
+        width: 50px;
+        padding-right: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      h2 {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 32px;
+      }
+
+      span {
+        transition: color 2000ms cubic-bezier(0.25, 0.8, 0.25, 1);
+        padding-left: 2px;
+
+        &.hidden {
+          color: white;
+        }
+      }
     }
 
     &-next {
       border-radius: 100px;
-      width: 148px;
-      height: 48px;
-      background: #033778;
-      color: #FFFFFF;
+      width: 134px;
+      height: 42px;
+      background: map.get($geoml-primary, 400);
+      color: $light-contrast;
+      box-shadow: unset !important;
+
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 20px;
+
+      &.check {
+        background-color: $light-contrast;
+        color: map.get($geoml-primary, 700);
+        border: 2px solid map.get($geoml-primary, 700);
+      }
     }
   }
 

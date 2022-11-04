@@ -45,14 +45,15 @@
     <mat-divider class="estimation__divider"></mat-divider>
   </mat-card-content>
   <mat-card-actions class="estimation__actions">
-    <div class="estimation__actions-points">
+    <div *ngIf="{lastCheck: this.lastCheck$ | async} as data" class="estimation__actions-points">
       <div i18n>Ihre Punkte</div>
-      <h2>{{ score === undefined ? 0:score.human }}</h2>
-      <span class="estimation__actions-points-update" [ngClass]="{'hidden': this.pointGain === undefined}">{{
-        this.pointGain }}</span>
+      <h2>{{ humanPoints === undefined ? 0:humanPoints }}</h2>
+      <span *ngIf="data.lastCheck" class="estimation__actions-points-update"
+        [ngClass]="{'hidden': !this.showPointGain}">+{{
+          this.pointGain }}</span>
     </div>
-    <button color="primary" mat-raised-button i18n class="estimation__actions-next"
-      [disabled]="selectedValue === undefined" (click)="correctValue === undefined ? check() : next()">
+    <button *ngIf="selectedValue !== undefined" mat-raised-button class="estimation__actions-next"
+      [ngClass]="{'check': correctValue===undefined}" (click)="correctValue === undefined ? check() : next()">
       <ng-container *ngIf="correctValue === undefined">{{ checkText }}</ng-container>
       <ng-container *ngIf="correctValue !== undefined && try < 4">{{ nextText }}</ng-container>
       <ng-container *ngIf="correctValue !== undefined && try === 4">{{ resultText }}</ng-container>

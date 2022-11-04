@@ -19,14 +19,12 @@ export class EstimationComponent {
   selectedValue?: number;
   correctValue?: number;
   botValue?: number;
-  score: { human: number; bot: number; botGuess?: number } = {
-    human: 0,
-    bot: 0,
-  };
+  humanPoints?: number;
   pointGain?: number;
+  showPointGain = false;
 
-  checkText = $localize`Prüfen`;
-  nextText = $localize`Nächstes Bild`;
+  checkText = $localize`Überprüfen`;
+  nextText = $localize`Weiter`;
   resultText = $localize`Abschliessen`;
 
   guidedTour: GuidedTour = {
@@ -47,6 +45,7 @@ export class EstimationComponent {
   };
 
   tasks$!: Observable<string[]>;
+  lastCheck$?: Observable<Check>;
 
   @ViewChild('estimationImage') el?: ElementRef;
 
@@ -61,7 +60,7 @@ export class EstimationComponent {
 
   ngAfterViewChecked(): void {
     if (this.el && !this.tutorialDone && this.gameService.firstRound) {
-     // this.guidedTourService.startTour(this.guidedTour);
+      // this.guidedTourService.startTour(this.guidedTour);
       this.tutorialDone = true;
       this.cdr.detectChanges();
     }
@@ -70,34 +69,31 @@ export class EstimationComponent {
   check(): void {
     //TODO check value
     if (this.selectedValue !== undefined) {
-      this.gameService
-        .checkTask(this.try, this.selectedValue)
-        .pipe(take(1))
-        .subscribe((check: Check) => {
-          this.pointGain = check.humanPoints - this.score.human;
-          this.score = { human: check.humanPoints, bot: check.botPoints, botGuess: check.botGuess };
+      this.lastCheck$ = this.gameService.checkTask(this.try, this.selectedValue).pipe(
+        tap((check: Check) => {
+          this.pointGain = check.humanPoints;
+          this.humanPoints = this.gameService.humanScore;
           this.correctValue = check.correct;
           this.botValue = check.botGuess;
-          setTimeout(()=>{
-            this.pointGain = undefined
-          }, 3000);
-        });
+
+          this.showPointGain = true;
+          setTimeout(() => {
+            this.showPointGain = false;
+          }, 1000);
+        })
+      );
       this.checked = true;
     }
   }
 
   next(): void {
-    //TODO next image
-    this.score = {
-      human: 0,
-      bot: 0,
-    };
     this.correctValue = undefined;
     this.selectedValue = undefined;
     this.checked = false;
     this.try++;
 
     if (this.try === 5) {
+      this.gameService.humanScore = 0;
       this.router.navigate(['result']);
     }
   }

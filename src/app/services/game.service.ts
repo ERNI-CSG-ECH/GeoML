@@ -9,6 +9,7 @@ import { Check, Result } from '../model/game';
 })
 export class GameService {
   firstRound = true;
+  humanScore = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +21,11 @@ export class GameService {
   }
 
   checkTask(task: number, guess: number): Observable<Check> {
-    return this.http.post<Check>(`${AppSettings.API_ENDPOINT}/check`, { task, guess });
+    return this.http.post<Check>(`${AppSettings.API_ENDPOINT}/check`, { task, guess }).pipe(
+      tap((check: Check) => {
+        this.humanScore += check.humanPoints;
+      })
+    );
   }
 
   getResult(): Observable<Result> {
