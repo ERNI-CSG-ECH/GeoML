@@ -15,14 +15,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('dist/geo-ml/'));
 app.use(express.static('express/resources'));
 
+/* type tableRow {
+      id: number,
+      vehicles_per_day: number,
+      strassen_laenge: number,
+      Unfaelle_todesfolge,
+      Unfaelle_schwer,
+      Unfaelle_leicht,
+      real_labels_print,
+      cnn_prediction,
+      x_coord_print,
+      y_coord_print
+} */
+
 let sess;
 let humanPoints = [];
 let botPoints = [];
-let results = {};
+let results /* {[id: number]: tableRow} */ = {};
 let randomTasks = [];
 
 const loadResultTable = function (req, res) {
-  const data = fs.readFileSync(path.resolve('express/resources/data/result_table.csv'));
+  const data = fs.readFileSync(path.resolve('express/resources/data/master_file.csv'));
   parse(data, (err, records) => {
     if (err) {
       console.error(err);
@@ -32,11 +45,11 @@ const loadResultTable = function (req, res) {
     const attributes = records[0][0].split(';');
     for (let i = 1; i < records.length; i++) {
       const splitRecord = records[i][0].split(';');
-      const mapped = {};
+      const mapped /* :tableRow */ = {};
       for (let j = 0; j < attributes.length; j++) {
         mapped[attributes[j]] = splitRecord[j];
       }
-      results[mapped.ID] = { correct: parseInt(mapped.Label) + 1, botGuess: parseInt(mapped.Guess) + 1 };
+      results[mapped.id] = { correct: parseInt(mapped.real_labels_print) + 1, botGuess: parseInt(mapped.cnn_prediction) + 1 };
     }
 
     for (let i = 0; i < 5; i++) {
