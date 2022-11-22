@@ -1,8 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
-import { Observable, take, tap } from 'rxjs';
+import { Observable, Subject, take, takeUntil, tap } from 'rxjs';
 import { AppSettings } from 'src/app/config/settings';
 import { Check } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
@@ -13,7 +13,8 @@ import { InformationComponent } from '../information/information.component';
   templateUrl: './estimation.component.html',
   styleUrls: ['./estimation.component.scss'],
 })
-export class EstimationComponent {
+export class EstimationComponent implements OnDestroy {
+  private unsubscribe = new Subject<void>();
   apiEndpoint = AppSettings.API_ENDPOINT;
   tutorialDone = false;
   try = 0;
@@ -69,6 +70,11 @@ export class EstimationComponent {
     }
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+
   check(): void {
     //TODO check value
     if (this.selectedValue !== undefined) {
@@ -102,9 +108,14 @@ export class EstimationComponent {
   }
 
   onInfoClick(): void {
-    this.dialog.open(InformationComponent, {
-      minWidth: '370px',
-      data: { cars: 5000, streetLength: 5, accidentLethal: 5, accidentSever: 15, accidentLight: 30 },
-    });
+    this.gameService
+      .getInfo(this.try)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((data) => {
+        this.dialog.open(InformationComponent, {
+          minWidth: '370px',
+          data,
+        });
+      });
   }
 }

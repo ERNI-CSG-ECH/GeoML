@@ -49,7 +49,17 @@ const loadResultTable = function (req, res) {
       for (let j = 0; j < attributes.length; j++) {
         mapped[attributes[j]] = splitRecord[j];
       }
-      results[mapped.id] = { correct: parseInt(mapped.real_labels_print) + 1, botGuess: parseInt(mapped.cnn_prediction) + 1 };
+      results[mapped.id] = {
+        correct: parseInt(mapped.real_labels_print) + 1,
+        botGuess: parseInt(mapped.cnn_prediction) + 1,
+        information: {
+          cars: parseInt(mapped.vehicles_per_day),
+          streetLength: parseFloat(mapped.strassen_laenge),
+          accidentLethal: parseInt(mapped.Unfaelle_todesfolge),
+          accidentSever: parseInt(mapped.Unfaelle_schwer),
+          accidentLight: parseInt(mapped.Unfaelle_leicht),
+        },
+      };
     }
 
     for (let i = 0; i < 5; i++) {
@@ -70,6 +80,13 @@ const loadResultTable = function (req, res) {
       results[randomTasks[2]].botGuess,
       results[randomTasks[3]].botGuess,
       results[randomTasks[4]].botGuess,
+    ];
+    sess.information = [
+      results[randomTasks[0]].information,
+      results[randomTasks[1]].information,
+      results[randomTasks[2]].information,
+      results[randomTasks[3]].information,
+      results[randomTasks[4]].information,
     ];
 
     return;
@@ -144,6 +161,15 @@ app.get('/api/result', function (req, res) {
       botPoints,
       humanPoints,
     });
+  } else {
+    res.send(`Session does work.`);
+  }
+});
+
+app.get('/api/information/:task', function (req, res) {
+  if (sess) {
+    randomTasks = [];
+    return res.send(sess.information.at(parseInt(req.params.task)));
   } else {
     res.send(`Session does work.`);
   }

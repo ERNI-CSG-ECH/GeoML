@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { AppSettings } from '../config/settings';
-import { Check, Result } from '../model/game';
+import { Check, InformationData, Result } from '../model/game';
 
 @Injectable({
   providedIn: 'root',
@@ -54,5 +54,13 @@ export class GameService {
           };
         })
       );
+  }
+
+  getInfo(task: number): Observable<InformationData> {
+    return this.http.get<InformationData>(`${AppSettings.API_ENDPOINT}/information/${task}`).pipe(
+      map((result) => {
+        return result;
+      })
+    );
   }
 }
