@@ -54,10 +54,12 @@ const loadResultTable = function (req, res) {
         botGuess: parseInt(mapped.cnn_prediction) + 1,
         information: {
           cars: parseInt(mapped.vehicles_per_day),
-          streetLength: parseFloat(mapped.strassen_laenge),
+          streetLength: parseFloat(parseFloat(mapped.strassen_laenge).toFixed(3)),
           accidentLethal: parseInt(mapped.Unfaelle_todesfolge),
           accidentSever: parseInt(mapped.Unfaelle_schwer),
           accidentLight: parseInt(mapped.Unfaelle_leicht),
+          xCoords:  parseFloat(mapped.x_coord_print),
+          yCoords:  parseFloat(mapped.y_coord_print),
         },
       };
     }
