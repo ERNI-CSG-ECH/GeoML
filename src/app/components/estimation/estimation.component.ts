@@ -1,10 +1,12 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
 import { Observable, take, tap } from 'rxjs';
 import { AppSettings } from 'src/app/config/settings';
 import { Check } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
+import { InformationComponent } from '../information/information.component';
 
 @Component({
   selector: 'geoml-estimation',
@@ -53,6 +55,7 @@ export class EstimationComponent {
     private router: Router,
     private gameService: GameService,
     private guidedTourService: GuidedTourService,
+    private dialog: MatDialog,
     private cdr: ChangeDetectorRef
   ) {
     this.tasks$ = this.gameService.getTasks().pipe();
@@ -96,5 +99,12 @@ export class EstimationComponent {
       this.gameService.humanScore = 0;
       this.router.navigate(['result']);
     }
+  }
+
+  onInfoClick(): void {
+    this.dialog.open(InformationComponent, {
+      minWidth: '370px',
+      data: { cars: 5000, streetLength: 5, accidentLethal: 5, accidentSever: 15, accidentLight: 30 },
+    });
   }
 }

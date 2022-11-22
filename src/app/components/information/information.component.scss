@@ -1,0 +1,98 @@
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
+
+.information {
+  display: flex;
+  color: map.get($geoml-primary, 700);
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      box-shadow: 0px 0px 10px rgba(3, 55, 120, 0.6);
+
+      .mat-icon {
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__column {
+    &.left {
+      margin-right: 40px;
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 31px;
+
+      >div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        >span {
+          margin-left: 18px;
+        }
+      }
+    }
+
+    &.right {
+      flex: 1;
+
+      table {
+        width: 100%;
+
+        >tr:nth-child(1) {
+          font-weight: 700;
+          font-size: 25px;
+          line-height: 31px;
+        }
+
+        >tr:not:first-child {
+          >td:nth-child(2) {
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 110%;
+          }
+
+          >td:nth-child(3) {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  &__car-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    >span {
+      font-weight: 700;
+      font-size: 11px;
+      line-height: 100%;
+    }
+  }
+
+  &__circle {
+    width: 11px;
+    height: 11px;
+    border-radius: 11px;
+    margin-right: 9px;
+
+    &.yellow {
+      background-color: #E7EB38;
+    }
+
+    &.orange {
+      background-color: #F39C1B;
+    }
+
+    &.red {
+      background-color: #E0016C;
+    }
+  }
+}

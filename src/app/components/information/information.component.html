@@ -1,0 +1,48 @@
+<div mat-dialog-title class="information__header">
+  <button mat-icon-button (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content class="information">
+  <div class="information__column left">
+    <div>
+      <div class="information__car-icon">
+        <svg-icon name="car"></svg-icon><span i18n>pro Tag</span>
+      </div>
+      <span>{{data.cars}}</span>
+    </div>
+    <div>
+      <svg-icon name="ruler"></svg-icon>
+      <span>{{data.streetLength}} km</span>
+    </div>
+  </div>
+  <div class="information__column right">
+    <table>
+      <tr>
+        <td colspan="2" i18n>Unfälle</td>
+        <td>{{data.accidentLethal + data.accidentLight + data.accidentSever}}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="information__circle yellow"></div>
+        </td>
+        <td i18n>Leicht</td>
+        <td>{{data.accidentLight}}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="information__circle orange"></div>
+        </td>
+        <td i18n>Schwer</td>
+        <td>{{data.accidentSever}}</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="information__circle red"></div>
+        </td>
+        <td i18n>Tödlich</td>
+        <td>{{data.accidentLethal}}</td>
+      </tr>
+    </table>
+  </div>
+</mat-dialog-content>

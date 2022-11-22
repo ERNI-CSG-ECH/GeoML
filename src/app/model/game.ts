@@ -11,3 +11,11 @@ export interface Check {
   botPoints: number;
   humanPoints: number;
 }
+
+export interface InformationData {
+  cars: number;
+  streetLength: number;
+  accidentLethal: number;
+  accidentSever: number;
+  accidentLight: number;
+}

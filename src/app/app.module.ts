@@ -12,11 +12,14 @@ import { ResultComponent } from './components/result/result.component';
 import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { InformationComponent } from './components/information/information.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
-export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule];
+export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule, MatDialogModule, MatIconModule];
 
 @NgModule({
-  declarations: [AppComponent, EstimationComponent, ResultComponent],
+  declarations: [AppComponent, EstimationComponent, ResultComponent, InformationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
