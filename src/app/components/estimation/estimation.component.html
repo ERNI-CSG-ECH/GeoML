@@ -24,7 +24,10 @@
     </div>
     <div *ngIf="checked" class="estimation__bot-comment">
       <svg-icon name="bot"></svg-icon>
-      <div class="estimation__bot-comment-bubble">Diesmal bin ich richtig gelegen</div>
+      <div *ngIf="correctValue !== selectedValue && correctValue===botValue" class="estimation__bot-comment-bubble">Diesmal bin ich richtig gelegen</div>
+      <div *ngIf="correctValue === selectedValue && correctValue===botValue" class="estimation__bot-comment-bubble">Super! Wir sind beide richtiggelegen.</div>
+      <div *ngIf="correctValue === selectedValue && correctValue!==botValue" class="estimation__bot-comment-bubble">Sehr gut! Sie haben mich geschlagen.</div>
+      <div *ngIf="correctValue !== selectedValue && correctValue!==botValue" class="estimation__bot-comment-bubble">Oh! Wir lagen beide falsch.</div>
     </div>
     <div *ngIf="!checked" class="estimation__scale-text"><span i18n>sehr gering</span><span i18n>sehr hoch</span>
     </div>
