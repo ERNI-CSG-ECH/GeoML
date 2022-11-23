@@ -13,14 +13,6 @@
       <div [ngClass]="{'cropped-result': checked,'cropped-initial': !checked}">
         <img #estimationImage src="{{ apiEndpoint }}/files/{{ tasks[try] }}_{{ checked ? 'result' : 'initial' }}.png" />
       </div>
-      <div *ngIf="checked" class="estimation__content-result-container">
-        <div class="estimation__content-result" style="--correctValue: {{correctValue}}">
-          <svg-icon class="estimation__content-result-indicator" name="arrow"></svg-icon>
-        </div>
-        <button mat-icon-button (click)="onInfoClick()">
-          <svg-icon name="info"></svg-icon>
-        </button>
-      </div>
     </div>
     <div *ngIf="checked" class="estimation__bot-comment">
       <svg-icon name="bot"></svg-icon>
@@ -32,6 +24,9 @@
         i18n>Sehr gut! Sie haben mich geschlagen.</div>
       <div *ngIf="correctValue !== selectedValue && correctValue!==botValue" class="estimation__bot-comment-bubble"
         i18n>Oh! Wir lagen beide falsch.</div>
+      <button mat-icon-button (click)="onInfoClick()">
+        <svg-icon name="info"></svg-icon>
+      </button>
     </div>
     <div *ngIf="!checked" class="estimation__scale-text"><span i18n>sehr gering</span><span i18n>sehr hoch</span>
     </div>
