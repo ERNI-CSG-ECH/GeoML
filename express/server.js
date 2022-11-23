@@ -54,6 +54,7 @@ const loadResultTable = function (req, res) {
         botGuess: parseInt(mapped.cnn_prediction) + 1,
         information: {
           cars: parseInt(mapped.vehicles_per_day),
+          // TODO excel replaced floats with dates
           streetLength: parseFloat(parseFloat(mapped.strassen_laenge).toFixed(3)),
           accidentLethal: parseInt(mapped.Unfaelle_todesfolge),
           accidentSever: parseInt(mapped.Unfaelle_schwer),
@@ -97,7 +98,11 @@ const loadResultTable = function (req, res) {
 
 app.use('/', async function (req, res, next) {
   if (randomTasks.length !== 5) {
-    loadResultTable(req, res, next);
+    if(sess){
+      randomTasks = sess.tasks
+    } else {
+      loadResultTable(req, res, next);
+    }
   }
 
   next();
@@ -170,7 +175,6 @@ app.get('/api/result', function (req, res) {
 
 app.get('/api/information/:task', function (req, res) {
   if (sess) {
-    randomTasks = [];
     return res.send(sess.information.at(parseInt(req.params.task)));
   } else {
     res.send(`Session does work.`);

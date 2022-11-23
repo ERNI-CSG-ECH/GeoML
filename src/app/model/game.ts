@@ -1,7 +1,7 @@
 export interface Result {
-  humanTotal: number,
-  botTotal: number
-  checks: Check[]
+  humanTotal: number;
+  botTotal: number;
+  checks: Check[];
 }
 
 export interface Check {
@@ -18,4 +18,6 @@ export interface InformationData {
   accidentLethal: number;
   accidentSever: number;
   accidentLight: number;
+  xCoords: number;
+  yCoords: number;
 }

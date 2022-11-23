@@ -15,11 +15,12 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { InformationComponent } from './components/information/information.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { SafePipe } from './pipes/safe.pipe';
 
 export const MATERIAL_MODULES = [MatCardModule, MatButtonModule, MatDividerModule, MatDialogModule, MatIconModule];
 
 @NgModule({
-  declarations: [AppComponent, EstimationComponent, ResultComponent, InformationComponent],
+  declarations: [AppComponent, EstimationComponent, ResultComponent, InformationComponent, SafePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

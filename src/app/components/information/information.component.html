@@ -1,10 +1,10 @@
-<div class="information__card">
+<div class="information__map">
   <div class="information__header">
     <button mat-icon-button (click)="onClose()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
-  <iframe src="https://snazzymaps.com/embed/430540" width="100%" height="300px" style="border:none;"></iframe>
+  <iframe [src]='getMap() | safe' name="IframeGeoadmin"></iframe>
 </div>
 <div class="information">
   <div class="information__column left">

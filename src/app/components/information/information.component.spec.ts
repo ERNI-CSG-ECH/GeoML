@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { SafePipe } from 'src/app/pipes/safe.pipe';
 
 import { InformationComponent } from './information.component';
 
@@ -13,7 +14,7 @@ describe('InformationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InformationComponent],
+      declarations: [InformationComponent, SafePipe],
       imports: [
         MatButtonModule,
         MatDialogModule,
