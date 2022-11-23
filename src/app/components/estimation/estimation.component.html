@@ -24,6 +24,7 @@
         i18n>Sehr gut! Sie haben mich geschlagen.</div>
       <div *ngIf="correctValue !== selectedValue && correctValue!==botValue" class="estimation__bot-comment-bubble"
         i18n>Oh! Wir lagen beide falsch.</div>
+      <div class="spacer"></div>
       <button mat-icon-button (click)="onInfoClick()">
         <svg-icon name="info"></svg-icon>
       </button>
