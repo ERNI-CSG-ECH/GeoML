@@ -59,12 +59,13 @@ const loadResultTable = function (req, res) {
           accidentLethal: parseInt(mapped.Unfaelle_todesfolge),
           accidentSever: parseInt(mapped.Unfaelle_schwer),
           accidentLight: parseInt(mapped.Unfaelle_leicht),
-          xCoords:  parseFloat(mapped.x_coord_print),
-          yCoords:  parseFloat(mapped.y_coord_print),
+          xCoords: parseFloat(mapped.x_coord_print),
+          yCoords: parseFloat(mapped.y_coord_print),
         },
       };
     }
 
+    randomTasks = [];
     for (let i = 0; i < 5; i++) {
       randomTasks.push(Object.keys(results)[Math.floor(Math.random() * Object.keys(results).length)]);
     }
@@ -97,12 +98,10 @@ const loadResultTable = function (req, res) {
 };
 
 app.use('/', async function (req, res, next) {
-  if (randomTasks.length !== 5) {
-    if(sess){
-      randomTasks = sess.tasks
-    } else {
-      loadResultTable(req, res, next);
-    }
+  if (sess && !sess.finished) {
+    randomTasks = sess.tasks;
+  } else {
+    loadResultTable(req, res, next);
   }
 
   next();
@@ -121,7 +120,7 @@ app.get('/app', function (req, res) {
 });
 
 app.post('/app/reset', function (req, res) {
-  randomTasks = [];
+  sess.finished = true;
   res.sendFile(path.resolve('dist/geo-ml/index.html'));
 });
 
@@ -159,7 +158,7 @@ app.post('/api/check', function (req, res) {
 
 app.get('/api/result', function (req, res) {
   if (sess) {
-    randomTasks = [];
+    sess.finished = true;
     return res.send({
       sessionId: sess.id,
       tasks: sess.tasks,
