@@ -3,6 +3,7 @@
 
 ::ng-deep .mat-dialog-container {
   padding: 0 0 24px;
+  overflow: hidden;
 }
 
 .information {
@@ -21,8 +22,8 @@
 
   &__header {
     position: absolute;
-    right: 18px;
-    top: 18px;
+    left: 18px;
+    top: 44px;
 
     button {
       box-shadow: 0px 0px 10px rgba(3, 55, 120, 0.6);
