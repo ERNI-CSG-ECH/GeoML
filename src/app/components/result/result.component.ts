@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { AppSettings } from 'src/app/config/settings';
 import { Result } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
@@ -17,15 +17,22 @@ export class ResultComponent implements OnInit {
     bot: 8,
   };
 
-  result$!: Observable<Result>;
+  result!: Result;
+  imageSrc$: Observable<string[]>;
 
   constructor(private router: Router, private gameService: GameService) {
-    this.result$ = this.gameService.getResult().pipe();
+    this.result = this.gameService.getResult();
+    this.imageSrc$ = combineLatest(
+      this.result.checks.map((check) => {
+        return this.gameService.loadImage(check.task, true);
+      })
+    );
   }
 
   ngOnInit(): void {}
 
   reset(): void {
+    this.gameService.reset();
     this.router.navigate(['']);
   }
 }

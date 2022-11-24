@@ -17,6 +17,7 @@ export class EstimationComponent implements OnDestroy {
   private unsubscribe = new Subject<void>();
   tutorialDone = false;
   try = 0;
+  currentTask?: string;
   checked = false;
   selectedValue?: number;
   correctValue?: number;
@@ -46,10 +47,8 @@ export class EstimationComponent implements OnDestroy {
     ],
   };
 
-  tasks$!: Observable<string[]>;
-  lastCheck$?: Observable<Check>;
-
-  imageSrcSubject = new Subject<string>();
+  tasks$!: Promise<string[]>;
+  lastCheck$?: Promise<Check>;
   imageSrc$?: Promise<string>;
 
   @ViewChild('estimationImage') el?: ElementRef;
@@ -59,15 +58,13 @@ export class EstimationComponent implements OnDestroy {
     private gameService: GameService,
     private guidedTourService: GuidedTourService,
     private dialog: MatDialog,
-    private cdr: ChangeDetectorRef,
-    private storage: AngularFireStorage
+    private cdr: ChangeDetectorRef
   ) {
-    this.tasks$ = this.gameService.getTasks().pipe(
-      takeUntil(this.unsubscribe),
-      tap((tasks) => {
-        this.loadImage(tasks[0]);
-      })
-    );
+    this.tasks$ = this.gameService.randomTasks$.then((tasks) => {
+      this.currentTask = tasks[0];
+      this.loadImage(this.currentTask);
+      return tasks;
+    });
   }
 
   ngAfterViewChecked(): void {
@@ -87,20 +84,21 @@ export class EstimationComponent implements OnDestroy {
     //TODO check value
     if (this.selectedValue !== undefined) {
       this.checked = true;
+      this.currentTask = task;
       this.loadImage(task);
-      this.lastCheck$ = this.gameService.checkTask(this.try, this.selectedValue).pipe(
-        tap((check: Check) => {
-          this.pointGain = check.humanPoints;
-          this.humanPoints = this.gameService.humanScore;
-          this.correctValue = check.correct;
-          this.botValue = check.botGuess;
+      this.lastCheck$ = this.gameService.checkTask(task, this.selectedValue).then((check: Check) => {
+        this.pointGain = check.humanPoints;
+        this.humanPoints = this.gameService.humanScore;
+        this.correctValue = check.correct;
+        this.botValue = check.botGuess;
 
-          this.showPointGain = true;
-          setTimeout(() => {
-            this.showPointGain = false;
-          }, 1000);
-        })
-      );
+        this.showPointGain = true;
+        setTimeout(() => {
+          this.showPointGain = false;
+        }, 1000);
+
+        return check;
+      });
     }
   }
 
@@ -110,28 +108,25 @@ export class EstimationComponent implements OnDestroy {
       this.selectedValue = undefined;
       this.checked = false;
       this.try++;
-      this.loadImage(nextTask);
+      this.currentTask = nextTask;
+      this.loadImage(this.currentTask);
     } else {
-      this.gameService.humanScore = 0;
       this.router.navigate(['result']);
     }
   }
 
   onInfoClick(): void {
-    this.gameService
-      .getInfo(this.try)
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe((data) => {
+    if (this.currentTask) {
+      this.gameService.getInfo(this.currentTask).then((data) => {
         this.dialog.open(InformationComponent, {
           minWidth: '370px',
           data,
         });
       });
+    }
   }
 
-  loadImage(task: string): void {
-    this.imageSrc$ = this.storage.storage
-      .ref(`images/${task}_${this.checked ? 'result' : 'initial'}.png`)
-      .getDownloadURL();
+  loadImage(task: string) {
+    this.imageSrc$ = this.gameService.loadImage(task, this.checked);
   }
 }

@@ -5,7 +5,7 @@ export interface Result {
 }
 
 export interface Check {
-  task: number;
+  task: string;
   correct: number;
   botGuess: number;
   botPoints: number;
@@ -20,4 +20,10 @@ export interface InformationData {
   accidentLight: number;
   xCoords: number;
   yCoords: number;
+}
+
+export interface TaskData {
+  botGuess: number;
+  correct: number;
+  information: InformationData;
 }

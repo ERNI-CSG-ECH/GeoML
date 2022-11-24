@@ -1,4 +1,4 @@
-<mat-card  *ngIf="result$ | async as result" class="result">
+<mat-card class="result">
   <mat-card-title class="result__title" i18n>So haben Sie abgeschnitten:</mat-card-title>
   <mat-card-content class="result__content">
     <div class="result__content-summary">
@@ -16,7 +16,7 @@
     </div>
     <div>Übersicht Ihrer Resultate:</div>
     <mat-divider class="result__divider"></mat-divider>
-    <ng-container>
+    <ng-container *ngIf="imageSrc$ | async as images">
       <div class="result__content-score" *ngFor="let score of result.checks; let idx=index">
         <div class="result__content-score-card">
           <div>
@@ -24,7 +24,7 @@
             <div i18n>Punkte Algorithmus: {{score.botPoints}}</div>
           </div>
           <img #estimationImage class="estimation__content-image"
-            src="{{ apiEndpoint }}/files/{{ score.task }}_result.png" />
+            [src]="images[idx] | safe" />
         </div>
         <mat-divider class="result__divider"></mat-divider>
       </div>

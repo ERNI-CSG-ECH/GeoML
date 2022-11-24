@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { map, Observable, tap } from 'rxjs';
 import { AppSettings } from '../config/settings';
-import { Check, InformationData, Result } from '../model/game';
+import { Check, InformationData, Result, TaskData } from '../model/game';
 
 @Injectable({
   providedIn: 'root',
@@ -10,57 +12,88 @@ import { Check, InformationData, Result } from '../model/game';
 export class GameService {
   firstRound = true;
   humanScore = 0;
+  botScore = 0;
+  checks: Check[] = [];
 
-  constructor(private http: HttpClient) {}
+  randomTasks$: Promise<string[]>;
 
-  getTasks(): Observable<string[]> {
-    return this.http.get<{ values: string[] }>(`${AppSettings.API_ENDPOINT}/tasks`).pipe(
-      tap((tasks) => console.log(tasks)),
-      map((tasks) => tasks.values)
-    );
+  constructor(private http: HttpClient, private firebase: AngularFireDatabase, private storage: AngularFireStorage) {
+    this.randomTasks$ = this.loadRandomTasks();
   }
 
-  checkTask(task: number, guess: number): Observable<Check> {
-    return this.http.post<Check>(`${AppSettings.API_ENDPOINT}/check`, { task, guess }).pipe(
-      tap((check: Check) => {
-        this.humanScore += check.humanPoints;
-      })
-    );
+  checkTask(taskId: string, guess: number): Promise<Check> {
+    return this.firebase.database
+      .ref(`data/${taskId}`)
+      .get()
+      .then((task) => {
+        const taskData = task.toJSON() as TaskData;
+        const delta = Math.abs(guess - taskData.correct);
+        const botDelta = Math.abs(taskData.botGuess - taskData.correct);
+        const humanPoints = delta > 4 ? 0 : Math.pow(4 - delta, 2);
+        const botPoints = botDelta > 4 ? 0 : Math.pow(4 - botDelta, 2);
+
+        this.humanScore += humanPoints;
+        this.botScore += botPoints;
+
+        const mapped: Check = {
+          task: taskId,
+          correct: taskData.correct,
+          botGuess: taskData.botGuess,
+          botPoints: botPoints,
+          humanPoints: humanPoints,
+        };
+        this.checks.push(mapped);
+
+        return mapped;
+      });
   }
 
-  getResult(): Observable<Result> {
+  getResult(): Result {
     this.firstRound = false;
-    return this.http
-      .get<{ tasks: number[]; correct: number[]; botGuess: number[]; botPoints: number[]; humanPoints: number[] }>(
-        `${AppSettings.API_ENDPOINT}/result`
-      )
-      .pipe(
-        tap((result) => console.log(result)),
-        map((result) => {
-          let checks: Check[] = [];
-          result.tasks.map((task, idx) => {
-            checks.push({
-              task,
-              correct: result.correct[idx],
-              botGuess: result.botGuess[idx],
-              botPoints: result.botPoints[idx],
-              humanPoints: result.humanPoints[idx],
-            });
-          });
-          return {
-            humanTotal: result.humanPoints.reduce((prev, cur) => prev + cur),
-            botTotal: result.botPoints.reduce((prev, cur) => prev + cur),
-            checks,
-          };
-        })
-      );
+    return {
+      humanTotal: this.humanScore,
+      botTotal: this.botScore,
+      checks: this.checks,
+    };
   }
 
-  getInfo(task: number): Observable<InformationData> {
-    return this.http.get<InformationData>(`${AppSettings.API_ENDPOINT}/information/${task}`).pipe(
-      map((result) => {
-        return result;
-      })
-    );
+  getInfo(taskId: string): Promise<InformationData> {
+    return this.firebase.database
+      .ref(`data/${taskId}/information`)
+      .get()
+      .then((information) => {
+        return information.toJSON() as InformationData;
+      });
+  }
+
+  reset(): void {
+    this.botScore = 0;
+    this.humanScore = 0;
+    this.checks = [];
+    this.loadRandomTasks();
+  }
+
+  loadImage(task: string, checked: boolean): Promise<string> {
+    return this.storage.storage.ref(`images/${task}_${checked ? 'result' : 'initial'}.png`).getDownloadURL();
+  }
+
+  private loadRandomTasks(): Promise<string[]> {
+    return this.firebase.database
+      .ref('data')
+      .get()
+      .then((snapshot) => {
+        const randomTasks: string[] = [];
+        const allTasks = snapshot.toJSON() as { [id: string]: TaskData };
+        const numberOfTasks = Object.keys(allTasks).length;
+        for (let i = 0; i < 5; i++) {
+          // TODO we can't choose between 2100 to 2399 because the images are missing; remove when ready
+          let randomIdx = 2100;
+          while (randomIdx >= 2100 && randomIdx < 2400) {
+            randomIdx = Math.floor(Math.random() * numberOfTasks);
+          }
+          randomTasks.push(Object.keys(allTasks)[randomIdx]);
+        }
+        return randomTasks;
+      });
   }
 }
