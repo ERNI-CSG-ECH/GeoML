@@ -67,7 +67,8 @@ const loadResultTable = function (req, res) {
 
     randomTasks = [];
     for (let i = 0; i < 5; i++) {
-      randomTasks.push(Object.keys(results)[Math.floor(Math.random() * Object.keys(results).length)]);
+      const randomIdx = Math.floor(Math.random() * Object.keys(results).length);
+      randomTasks.push(Object.keys(results)[i]);
     }
     sess = req.session;
     sess.tasks = randomTasks;

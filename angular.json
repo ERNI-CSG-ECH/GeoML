@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "GeoML:build:production",
+            "firebaseProject": "geoml-d8b69",
+            "firebaseHostingSite": "geoml-d8b69"
+          }
         }
       }
     }

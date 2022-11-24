@@ -1,5 +1,5 @@
-<mat-card class="estimation">
-  <div *ngIf="tasks$ | async as tasks" class="estimation__progress">
+<mat-card *ngIf="tasks$ | async as tasks" class="estimation">
+  <div class="estimation__progress">
     <span *ngFor="let task of tasks; let idx = index" class="estimation__progress-step"
       [ngClass]="{'active': idx <= try}"></span>
   </div>
@@ -8,10 +8,13 @@
     <span *ngIf="correctValue !== undefined && correctValue === selectedValue" i18n>Richtig!</span>
     <span *ngIf="correctValue !== undefined && correctValue !== selectedValue" i18n>Leider Falsch!</span>
   </mat-card-title>
-  <mat-card-content *ngIf="tasks$ | async as tasks" class="estimation__content">
+  <mat-card-content class="estimation__content">
     <div class="estimation__content-image">
       <div [ngClass]="{'cropped-result': checked,'cropped-initial': !checked}">
-        <img #estimationImage src="{{ apiEndpoint }}/files/{{ tasks[try] }}_{{ checked ? 'result' : 'initial' }}.png" />
+        <img *ngIf="imageSrc$ | async as imageSrc; else loadingImage" #estimationImage [src]="imageSrc | safe" />
+        <ng-template #loadingImage>
+          <mat-spinner class="loading"></mat-spinner>
+        </ng-template>
       </div>
     </div>
     <div *ngIf="checked" class="estimation__bot-comment">
@@ -60,7 +63,8 @@
         this.pointGain }}</span>
     </div>
     <button *ngIf="selectedValue !== undefined" mat-raised-button class="estimation__actions-next"
-      [ngClass]="{'check': correctValue===undefined}" (click)="correctValue === undefined ? check() : next()">
+      [ngClass]="{'check': correctValue===undefined}"
+      (click)="correctValue === undefined ? check(tasks[try]) : next(try<5?tasks[try+1]:undefined)">
       <ng-container *ngIf="correctValue === undefined">{{ checkText }}</ng-container>
       <ng-container *ngIf="correctValue !== undefined && try < 4">{{ nextText }}</ng-container>
       <ng-container *ngIf="correctValue !== undefined && try === 4">{{ resultText }}</ng-container>

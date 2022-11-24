@@ -1,9 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
 import { Observable, Subject, take, takeUntil, tap } from 'rxjs';
-import { AppSettings } from 'src/app/config/settings';
 import { Check } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
 import { InformationComponent } from '../information/information.component';
@@ -15,7 +15,6 @@ import { InformationComponent } from '../information/information.component';
 })
 export class EstimationComponent implements OnDestroy {
   private unsubscribe = new Subject<void>();
-  apiEndpoint = AppSettings.API_ENDPOINT;
   tutorialDone = false;
   try = 0;
   checked = false;
@@ -50,6 +49,9 @@ export class EstimationComponent implements OnDestroy {
   tasks$!: Observable<string[]>;
   lastCheck$?: Observable<Check>;
 
+  imageSrcSubject = new Subject<string>();
+  imageSrc$?: Promise<string>;
+
   @ViewChild('estimationImage') el?: ElementRef;
 
   constructor(
@@ -57,9 +59,15 @@ export class EstimationComponent implements OnDestroy {
     private gameService: GameService,
     private guidedTourService: GuidedTourService,
     private dialog: MatDialog,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private storage: AngularFireStorage
   ) {
-    this.tasks$ = this.gameService.getTasks().pipe();
+    this.tasks$ = this.gameService.getTasks().pipe(
+      takeUntil(this.unsubscribe),
+      tap((tasks) => {
+        this.loadImage(tasks[0]);
+      })
+    );
   }
 
   ngAfterViewChecked(): void {
@@ -75,9 +83,11 @@ export class EstimationComponent implements OnDestroy {
     this.unsubscribe.complete();
   }
 
-  check(): void {
+  check(task: string): void {
     //TODO check value
     if (this.selectedValue !== undefined) {
+      this.checked = true;
+      this.loadImage(task);
       this.lastCheck$ = this.gameService.checkTask(this.try, this.selectedValue).pipe(
         tap((check: Check) => {
           this.pointGain = check.humanPoints;
@@ -91,17 +101,17 @@ export class EstimationComponent implements OnDestroy {
           }, 1000);
         })
       );
-      this.checked = true;
     }
   }
 
-  next(): void {
-    this.correctValue = undefined;
-    this.selectedValue = undefined;
-    this.checked = false;
-    this.try++;
-
-    if (this.try === 5) {
+  next(nextTask?: string): void {
+    if (nextTask) {
+      this.correctValue = undefined;
+      this.selectedValue = undefined;
+      this.checked = false;
+      this.try++;
+      this.loadImage(nextTask);
+    } else {
       this.gameService.humanScore = 0;
       this.router.navigate(['result']);
     }
@@ -117,5 +127,11 @@ export class EstimationComponent implements OnDestroy {
           data,
         });
       });
+  }
+
+  loadImage(task: string): void {
+    this.imageSrc$ = this.storage.storage
+      .ref(`images/${task}_${this.checked ? 'result' : 'initial'}.png`)
+      .getDownloadURL();
   }
 }

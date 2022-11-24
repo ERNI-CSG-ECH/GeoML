@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "geoml-d8b69": {
+      "hosting": {
+        "GeoML": [
+          "geoml-d8b69"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "geoml-d8b69"
+  }
+}
