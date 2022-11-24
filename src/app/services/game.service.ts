@@ -66,7 +66,7 @@ export class GameService {
     this.botScore = 0;
     this.humanScore = 0;
     this.checks = [];
-    this.loadRandomTasks();
+    this.randomTasks$ = this.loadRandomTasks();
   }
 
   loadImage(task: string, checked: boolean): Promise<string> {
