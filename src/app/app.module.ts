@@ -9,7 +9,6 @@ import { MatCardModule } from '@angular/material/card';
 import { EstimationComponent } from './components/estimation/estimation.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { ResultComponent } from './components/result/result.component';
-import { GuidedTourModule, GuidedTourService } from 'ngx-guided-tour';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -45,13 +44,12 @@ export const FIREBASE_MODULES = [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    GuidedTourModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
     ...MATERIAL_MODULES,
     ...FIREBASE_MODULES,
   ],
-  providers: [GuidedTourService, AngularFireAuth],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

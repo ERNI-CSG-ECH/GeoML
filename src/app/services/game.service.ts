@@ -2,27 +2,24 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { map, Observable, tap } from 'rxjs';
-import { AppSettings } from '../config/settings';
 import { Check, InformationData, Result, TaskData } from '../model/game';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  firstRound = true;
   humanScore = 0;
   botScore = 0;
   checks: Check[] = [];
 
   randomTasks$: Promise<string[]>;
 
-  constructor(private http: HttpClient, private firebase: AngularFireDatabase, private storage: AngularFireStorage) {
+  constructor(private http: HttpClient, private database: AngularFireDatabase, private storage: AngularFireStorage) {
     this.randomTasks$ = this.loadRandomTasks();
   }
 
   checkTask(taskId: string, guess: number): Promise<Check> {
-    return this.firebase.database
+    return this.database.database
       .ref(`data/${taskId}`)
       .get()
       .then((task) => {
@@ -49,7 +46,6 @@ export class GameService {
   }
 
   getResult(): Result {
-    this.firstRound = false;
     return {
       humanTotal: this.humanScore,
       botTotal: this.botScore,
@@ -58,7 +54,7 @@ export class GameService {
   }
 
   getInfo(taskId: string): Promise<InformationData> {
-    return this.firebase.database
+    return this.database.database
       .ref(`data/${taskId}/information`)
       .get()
       .then((information) => {
@@ -78,7 +74,7 @@ export class GameService {
   }
 
   private loadRandomTasks(): Promise<string[]> {
-    return this.firebase.database
+    return this.database.database
       .ref('data')
       .get()
       .then((snapshot) => {

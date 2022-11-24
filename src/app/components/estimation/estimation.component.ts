@@ -1,9 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { GuidedTour, GuidedTourService } from 'ngx-guided-tour';
-import { Observable, Subject, take, takeUntil, tap } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Check } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
 import { InformationComponent } from '../information/information.component';
@@ -30,23 +28,6 @@ export class EstimationComponent implements OnDestroy {
   nextText = $localize`Weiter`;
   resultText = $localize`Abschliessen`;
 
-  guidedTour: GuidedTour = {
-    tourId: 'tutorial',
-    steps: [
-      {
-        selector: '.estimation__content-image',
-        content: 'Auf dem Bild wird das Strassennetz, welches sie bewerten sollen, weiss markiert.',
-        orientation: 'bottom',
-      },
-      {
-        selector: '.estimation__values-number:nth-child(3)',
-        content: 'Wählen sie die Risikostufe aus.',
-        orientation: 'top',
-      },
-      { selector: '.estimation__actions-next', content: 'Bestätigen sie die Auswahl.', orientation: 'top' },
-    ],
-  };
-
   tasks$!: Promise<string[]>;
   lastCheck$?: Promise<Check>;
   imageSrc$?: Promise<string>;
@@ -56,7 +37,6 @@ export class EstimationComponent implements OnDestroy {
   constructor(
     private router: Router,
     private gameService: GameService,
-    private guidedTourService: GuidedTourService,
     private dialog: MatDialog,
     private cdr: ChangeDetectorRef
   ) {
@@ -65,14 +45,6 @@ export class EstimationComponent implements OnDestroy {
       this.loadImage(this.currentTask);
       return tasks;
     });
-  }
-
-  ngAfterViewChecked(): void {
-    if (this.el && !this.tutorialDone && this.gameService.firstRound) {
-      // this.guidedTourService.startTour(this.guidedTour);
-      this.tutorialDone = true;
-      this.cdr.detectChanges();
-    }
   }
 
   ngOnDestroy(): void {
