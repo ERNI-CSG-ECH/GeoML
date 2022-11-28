@@ -82,11 +82,7 @@ export class GameService {
         const allTasks = snapshot.toJSON() as { [id: string]: TaskData };
         const numberOfTasks = Object.keys(allTasks).length;
         for (let i = 0; i < 5; i++) {
-          // TODO we can't choose between 2100 to 2399 because the images are missing; remove when ready
-          let randomIdx = 2100;
-          while (randomIdx >= 2100 && randomIdx < 2400) {
-            randomIdx = Math.floor(Math.random() * numberOfTasks);
-          }
+          const randomIdx = Math.floor(Math.random() * numberOfTasks);
           randomTasks.push(Object.keys(allTasks)[randomIdx]);
         }
         return randomTasks;
