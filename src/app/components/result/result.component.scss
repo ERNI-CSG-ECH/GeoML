@@ -1,3 +1,6 @@
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -26,14 +29,195 @@
   max-width: 320px;
   overflow: auto;
   height: 90vh;
-  font-size: 16px;
-  line-height: 19px;
+
+  &__button {
+    &-flat {
+      width: 160px;
+
+      ::ng-deep .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+        color: map.get($geoml-primary, 700);
+        word-break: break-word;
+        white-space: pre-wrap;
+
+        p {
+          margin: unset;
+          font-weight: 600;
+          font-size: 11px;
+          line-height: 98.7%;
+          text-align: left;
+          flex: 1;
+        }
+
+        svg-icon,
+        .mat-icon {
+          &.rotate {
+            &-90 {
+              transform: rotate(-90deg);
+            }
+
+            &-45 {
+              transform: rotate(-45deg);
+            }
+          }
+
+          &.huge {
+            svg {
+              height: 40px;
+              width: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
 
   &__title {
     padding-bottom: 18px;
+
   }
 
   &__content {
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      color: map.get($geoml-primary, 700);
+      margin-bottom: 32px;
+
+      h2 {
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 31px;
+        margin: unset;
+      }
+
+      .result__button-flat {
+        width: 115px;
+      }
+    }
+
+
+    &-points {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 280px;
+      margin: auto;
+
+      &-human {
+        .made {
+          font-weight: 700;
+          font-size: 70px;
+          line-height: 70px;
+          color: map.get($geoml-primary, 400);
+        }
+
+        .total {
+          font-weight: 700;
+          font-size: 35px;
+          line-height: 44px;
+          color: map.get($geoml-primary, 300);
+        }
+      }
+
+      &-bot {
+        svg {
+          width: 23px;
+          height: 23px;
+          padding-right: 10px;
+        }
+
+        .made {
+          font-weight: 700;
+          font-size: 35px;
+          line-height: 44px;
+          color: map.get($geoml-primary, 700);
+        }
+
+        .total {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 25px;
+          color: transparentize(map.get($geoml-primary, 700), 0.4);
+        }
+      }
+    }
+
+    &-info {
+      background-color: map.get($geoml-primary, 100);
+      border-radius: 10px;
+      color: map.get($geoml-primary, 700);
+
+      h3 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        margin: unset;
+      }
+
+      h4 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 24px;
+      }
+
+      &-share {
+        margin: 24px 0;
+
+        .mat-icon-button {
+          width: fit-content;
+          padding-right: 24px;
+        }
+      }
+
+      &-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+
+        p {
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 24px;
+          width: 200px;
+          margin: 0 auto 24px auto;
+          text-align: center;
+        }
+
+        .mat-raised-button {
+          font-weight: 600;
+          font-size: 17px;
+          line-height: 20px;
+          margin: 0 auto 24px auto;
+          border-radius: 100px;
+          width: 200px;
+          height: 48px;
+          background: #033778;
+          color: #FFFFFF;
+        }
+
+        a.mat-raised-button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .divider {
+          width: 100%;
+          height: 5px;
+          border-radius: 10px;
+          background: transparentize(map.get($geoml-primary, 700), 0.9);
+          margin-bottom: 24px;
+        }
+
+      }
+    }
+
     &-summary {
       display: flex;
       flex-direction: column;
@@ -80,14 +264,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    &-reset.mat-raised-button {
-      border-radius: 100px;
-      width: 200px;
-      height: 48px;
-      margin: 18px 8px;
-      background: #033778;
-      color: #FFFFFF;
-    }
   }
 }

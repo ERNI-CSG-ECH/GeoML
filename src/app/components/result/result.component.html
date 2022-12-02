@@ -1,38 +1,59 @@
 <mat-card class="result">
-  <mat-card-title class="result__title" i18n>So haben Sie abgeschnitten:</mat-card-title>
+  <mat-card-title class="result__title" i18n></mat-card-title>
   <mat-card-content class="result__content">
-    <div class="result__content-summary">
-      <div i18n>Ihre Punktzahl: {{result.humanTotal}}</div>
-      <div i18n>Punkte Algorithmus: {{result.botTotal}}</div>
-      <div i18n *ngIf="result.humanTotal < result.botTotal">
-        Sind Sie überrascht, dass der Algorithmus tendenziell genauer war als Sie?<br>
-        Möchten Sie diese Erfahrung teilen?
-      </div>
-      <div i18n *ngIf="result.humanTotal >= result.botTotal">
-        Oh Wow! sie haben den Algorithmus geschlagen. Nicht jeder kann das.<br>
-        Möchten Sie diese Erfahrung teilen?
-      </div>
-      <button mat-raised-button><img src="../../../assets/images/linkedIn.png"></button>
+    <div class="result__content-title">
+      <h2 i18n>Ihr Ergebnis</h2>
+      <button mat-flat-button class="result__button-flat" (click)="reset()">
+        <p>Neuer Versuch</p>
+        <mat-icon class="rotate-45">refresh</mat-icon>
+      </button>
     </div>
-    <div>Übersicht Ihrer Resultate:</div>
-    <mat-divider class="result__divider"></mat-divider>
-    <ng-container *ngIf="imageSrc$ | async as images">
-      <div class="result__content-score" *ngFor="let score of result.checks; let idx=index">
-        <div class="result__content-score-card">
-          <div>
-            <div i18n>Ihre Punktzahl: {{score.humanPoints}}</div>
-            <div i18n>Punkte Algorithmus: {{score.botPoints}}</div>
-          </div>
-          <img #estimationImage class="estimation__content-image"
-            [src]="images[idx] | safe" />
-        </div>
-        <mat-divider class="result__divider"></mat-divider>
+    <div class="result__content-points">
+      <div class="result__content-points-human">
+        <span class="made">{{result.humanTotal}}</span>
+        <span class="total">/80</span>
       </div>
-    </ng-container>
-
+      <div class="result__content-points-bot">
+        <svg-icon name="bot"></svg-icon>
+        <span class="made">{{result.botTotal}}</span>
+        <span class="total">/80</span>
+      </div>
+    </div>
+    <button mat-flat-button class="result__button-flat" disabled>
+      <svg-icon name="arrow" class="rotate-90 huge"></svg-icon>
+      <p>Zur Übersicht Ihrer Resultate</p>
+    </button>
   </mat-card-content>
   <mat-card-actions class="result__actions">
-    <a href="https://www.betterask.erni" target="_blank">Wollen Sie mehr zu dieser Challenge erfahren?</a>
-    <button mat-raised-button i18n class="result__actions-reset" (click)="reset()">Wiederholen</button>
+    <mat-card class="result__content-info">
+      <div i18n *ngIf="result.humanTotal < result.botTotal">
+        <p>Sind Sie überrascht, dass der Algorithmus tendenziell genauer war als Sie?</p>
+        <h4>Teilen Sie dieses Ergebnis!</h4>
+      </div>
+      <div i18n *ngIf="result.humanTotal >= result.botTotal">
+        <h3>Herzlichen Glückwunsch!</h3>
+        <p>Sie haben das neurale Netz geschlagen. Damit gehören Sie zu wenigen User, die das geschafft haben.</p>
+        <h4>Teilen Sie dieses Ergebnis!</h4>
+      </div>
+      <div class="result__content-info-share">
+        <button mat-icon-button>
+          <svg-icon name="linkedin"></svg-icon>
+        </button>
+        <button mat-icon-button>
+          <svg-icon name="facebook"></svg-icon>
+        </button>
+        <button mat-icon-button>
+          <svg-icon name="twitter"></svg-icon>
+        </button>
+      </div>
+      <div class="result__content-info-links">
+        <div class="divider"></div>
+        <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
+        <a href="https://www.betterask.erni/" mat-raised-button i18n class="result__actions-reset">Mehr erfahren</a>
+        <div class="divider"></div>
+        <p class="big" i18n>Oder versuchen sie es noch einmal</p>
+        <button mat-raised-button i18n class="result__actions-reset" (click)="reset()">Neuer Versuch</button>
+      </div>
+    </mat-card>
   </mat-card-actions>
 </mat-card>

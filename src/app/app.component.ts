@@ -17,5 +17,8 @@ export class AppComponent {
     this.iconReg.loadSvg('../../../assets/icons/info.svg', 'info')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/car.svg', 'car')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/ruler.svg', 'ruler')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/facebook.svg', 'facebook')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/twitter.svg', 'twitter')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/linkedin.svg', 'linkedin')?.pipe(take(1)).subscribe();
   }
 }
