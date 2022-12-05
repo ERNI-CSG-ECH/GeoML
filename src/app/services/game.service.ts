@@ -46,11 +46,12 @@ export class GameService {
   }
 
   getResult(): Result {
-    return {
+    return JSON.parse('{"humanTotal":43,"botTotal":80,"checks":[{"task":"002122","correct":4,"botGuess":4,"botPoints":16,"humanPoints":1},{"task":"000021","correct":1,"botGuess":1,"botPoints":16,"humanPoints":16},{"task":"001357","correct":1,"botGuess":1,"botPoints":16,"humanPoints":16},{"task":"001902","correct":4,"botGuess":4,"botPoints":16,"humanPoints":1},{"task":"000381","correct":2,"botGuess":2,"botPoints":16,"humanPoints":9}]}')
+/*     return {
       humanTotal: this.humanScore,
       botTotal: this.botScore,
       checks: this.checks,
-    };
+    }; */
   }
 
   getInfo(taskId: string): Promise<InformationData> {
