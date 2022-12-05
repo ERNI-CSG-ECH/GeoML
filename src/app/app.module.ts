@@ -22,6 +22,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ResultCardComponent } from './components/result-card/result-card.component';
+import { EstimationValuesComponent } from './components/estimation-values/estimation-values.component';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -31,6 +34,7 @@ export const MATERIAL_MODULES = [
   MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
+  MatExpansionModule,
 ];
 export const FIREBASE_MODULES = [
   AngularFireModule.initializeApp(environment.firebase),
@@ -39,7 +43,15 @@ export const FIREBASE_MODULES = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, EstimationComponent, ResultComponent, InformationComponent, SafePipe],
+  declarations: [
+    AppComponent,
+    EstimationComponent,
+    ResultComponent,
+    InformationComponent,
+    SafePipe,
+    ResultCardComponent,
+    EstimationValuesComponent,
+  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

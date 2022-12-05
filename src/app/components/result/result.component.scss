@@ -27,10 +27,14 @@
 
 .result {
   max-width: 320px;
-  overflow: auto;
+  overflow: overlay;
   height: 90vh;
 
   &__button {
+    &-container {
+      padding: unset;
+    }
+
     &-flat {
       width: 160px;
 

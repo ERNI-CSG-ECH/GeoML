@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Check, InformationData, Result, TaskData } from '../model/game';
+import { Check, InformationData, MOCK_DATA, Result, TaskData } from '../model/game';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +36,7 @@ export class GameService {
           task: taskId,
           correct: taskData.correct,
           botGuess: taskData.botGuess,
+          humanGuess: guess,
           botPoints: botPoints,
           humanPoints: humanPoints,
         };
@@ -46,8 +47,8 @@ export class GameService {
   }
 
   getResult(): Result {
-    return JSON.parse('{"humanTotal":43,"botTotal":80,"checks":[{"task":"002122","correct":4,"botGuess":4,"botPoints":16,"humanPoints":1},{"task":"000021","correct":1,"botGuess":1,"botPoints":16,"humanPoints":16},{"task":"001357","correct":1,"botGuess":1,"botPoints":16,"humanPoints":16},{"task":"001902","correct":4,"botGuess":4,"botPoints":16,"humanPoints":1},{"task":"000381","correct":2,"botGuess":2,"botPoints":16,"humanPoints":9}]}')
-/*     return {
+    return MOCK_DATA;
+    /*     return {
       humanTotal: this.humanScore,
       botTotal: this.botScore,
       checks: this.checks,

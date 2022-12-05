@@ -34,25 +34,7 @@
     </div>
     <div *ngIf="!checked" class="estimation__scale-text"><span i18n>sehr gering</span><span i18n>sehr hoch</span>
     </div>
-    <div class="estimation__values">
-      <div class="estimation__values-button-container" *ngFor="let task of tasks; let idx = index">
-        <button mat-fab class="estimation__values-button" [ngClass]="{
-          'estimation__values-selected': idx + 1 === selectedValue && correctValue === undefined,
-          'estimation__values-solution': correctValue !== undefined,
-          'estimation__values-solution-false':
-            correctValue !== selectedValue && idx + 1 === selectedValue && correctValue !== undefined,
-          'estimation__values-solution-correct':
-            correctValue === selectedValue && idx + 1 === selectedValue && correctValue !== undefined,
-          'estimation__values-solution-true':
-            correctValue !== selectedValue && idx + 1 === correctValue && correctValue !== undefined
-        }" (click)="selectedValue = idx + 1">
-          {{ idx + 1 }}
-        </button>
-        <span *ngIf="correctValue!==undefined&&idx + 1===botValue" class="estimation__values-button-badge">
-          <svg-icon name="bot-pin"></svg-icon>
-        </span>
-      </div>
-    </div>
+    <geoml-estimation-values [correctValue]="correctValue" [(selectedValue)]="selectedValue" [botValue]="botValue"></geoml-estimation-values>
   </mat-card-content>
   <mat-card-actions class="estimation__actions">
     <div *ngIf="{lastCheck: this.lastCheck$ | async} as data" class="estimation__actions-points">

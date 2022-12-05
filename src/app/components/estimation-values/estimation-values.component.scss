@@ -1,0 +1,109 @@
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
+
+:host {
+  width: 100%;
+}
+
+.estimation__values {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  &-button {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
+    width: 50px;
+    height: 50px;
+
+    &.small {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 16px;
+      width: 24px;
+      height: 24px;
+
+      ::ng-deep .mat-button-wrapper {
+        line-height: unset;
+      }
+    }
+
+
+    filter: drop-shadow(0px 0px 3px map.get($geoml-primary, 300));
+    background: #FFFFFF;
+    box-shadow: unset !important;
+    color: map.get($geoml-primary, 700);
+
+    :disabled {
+      color: inherit;
+    }
+
+    &-container {
+      position: relative;
+    }
+
+    &-badge {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+    }
+
+    .small+&-badge {
+      left: 10px;
+      bottom: 6px;
+
+      svg {
+
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  &-selected {
+    filter: unset;
+    background: map.get($geoml-primary, 300);
+    border: 1px solid map.get($geoml-primary, 300);
+    color: #FFFFFF;
+  }
+
+  &-solution {
+    pointer-events: none;
+
+    &-correct {
+      filter: unset;
+      background: map.get($geoml-primary, A300);
+      border: 5px solid map.get($geoml-primary, A500);
+      color: #FFFFFF;
+
+      &.small {
+        border-width: 3px;
+      }
+    }
+
+    &-false {
+      filter: unset;
+      background: map.get(map.get($geoml-primary, contrast), A300);
+      border: 5px solid map.get(map.get($geoml-primary, contrast), A500);
+
+      &.small {
+        border-width: 3px;
+      }
+
+      color: #FFFFFF;
+    }
+
+    &-true {
+      filter: unset;
+      background: map.get($geoml-primary, A300);
+      border: unset;
+      color: #FFFFFF;
+    }
+  }
+
+  ::ng-deep .mat-button-wrapper {
+    padding: unset;
+  }
+}

@@ -19,10 +19,19 @@
         <span class="total">/80</span>
       </div>
     </div>
-    <button mat-flat-button class="result__button-flat" disabled>
-      <svg-icon name="arrow" class="rotate-90 huge"></svg-icon>
-      <p>Zur Übersicht Ihrer Resultate</p>
-    </button>
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header class="result__button-container">
+          <mat-panel-title>
+            <button mat-flat-button class="result__button-flat">
+              <svg-icon name="arrow" class="rotate-90 huge"></svg-icon>
+              <p>Zur Übersicht Ihrer Resultate</p>
+            </button>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <geoml-result-card *ngFor="let check of result.checks" [check]="check"></geoml-result-card>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
   <mat-card-actions class="result__actions">
     <mat-card class="result__content-info">

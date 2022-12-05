@@ -1,0 +1,20 @@
+<div class="estimation__values">
+  <div class="estimation__values-button-container" *ngFor="let estimation of [1,2,3,4,5]">
+    <button mat-fab class="estimation__values-button" [ngClass]="{
+          'estimation__values-selected': estimation === selectedValue && correctValue === undefined,
+          'estimation__values-solution': correctValue !== undefined,
+          'estimation__values-solution-false':
+            correctValue !== selectedValue && estimation === selectedValue && correctValue !== undefined,
+          'estimation__values-solution-correct':
+            correctValue === selectedValue && estimation === selectedValue && correctValue !== undefined,
+          'estimation__values-solution-true':
+            correctValue !== selectedValue && estimation === correctValue && correctValue !== undefined,
+          'small': small
+        }" (click)="selectedValueChange.emit(estimation)">
+      {{ estimation }}
+    </button>
+    <span *ngIf="correctValue!==undefined && estimation===botValue" class="estimation__values-button-badge">
+      <svg-icon name="bot-pin"></svg-icon>
+    </span>
+  </div>
+</div>
