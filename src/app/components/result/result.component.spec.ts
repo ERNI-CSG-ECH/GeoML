@@ -4,6 +4,7 @@ import { MATERIAL_MODULES } from 'src/app/app.module';
 
 import { ResultComponent } from './result.component';
 import { GameService } from 'src/app/services/game.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ResultComponent', () => {
   let component: ResultComponent;
@@ -17,7 +18,7 @@ describe('ResultComponent', () => {
     };
     await TestBed.configureTestingModule({
       declarations: [ResultComponent],
-      imports: [...MATERIAL_MODULES, HttpClientTestingModule],
+      imports: [...MATERIAL_MODULES, HttpClientTestingModule, NoopAnimationsModule],
       providers: [{ provide: GameService, useValue: gameMock }],
     }).compileComponents();
 

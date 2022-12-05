@@ -13,7 +13,7 @@ describe('EstimationComponent', () => {
     const gameMock = { randomTasks$: new Promise(() => []) };
     await TestBed.configureTestingModule({
       declarations: [EstimationComponent],
-      imports: [...MATERIAL_MODULES, HttpClientTestingModule],
+      imports: [...MATERIAL_MODULES],
       providers: [{ provide: GameService, useValue: gameMock }],
     }).compileComponents();
 

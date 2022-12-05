@@ -8,12 +8,12 @@ describe('ResultCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResultCardComponent ]
-    })
-    .compileComponents();
+      declarations: [ResultCardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ResultCardComponent);
     component = fixture.componentInstance;
+    component.check = { task: '1', correct: 1, botGuess: 2, botPoints: 9, humanGuess: 1, humanPoints: 16 };
     fixture.detectChanges();
   });
 
