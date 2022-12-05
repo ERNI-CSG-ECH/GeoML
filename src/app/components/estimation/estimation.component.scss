@@ -52,42 +52,6 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-
-    &-image {
-      display: flex;
-      flex-direction: row;
-
-      .cropped {
-        overflow: hidden;
-        width: 335px;
-        border-radius: 15px;
-
-        &-initial {
-          @extend .cropped;
-          height: 335px;
-
-          img {
-            margin: -27px 0px 0px -92px;
-            width: 519px
-          }
-        }
-
-        &-result {
-          @extend .cropped;
-          height: 303px;
-
-          img {
-            margin: -33px 0px 0px -58px;
-            width: 488px;
-          }
-        }
-      }
-
-      .loading {
-        left: calc(50% - 50px);
-        top: calc(50% - 50px);
-      }
-    }
   }
 
   &__bot-comment {

@@ -1,0 +1,6 @@
+<div [ngClass]="{'cropped-result': checked,'cropped-initial': !checked, 'small': small}">
+  <img *ngIf="imageSrc$ | async as imageSrc; else loadingImage" #estimationImage [src]="imageSrc | safe" />
+  <ng-template #loadingImage>
+    <mat-spinner class="loading"></mat-spinner>
+  </ng-template>
+</div>

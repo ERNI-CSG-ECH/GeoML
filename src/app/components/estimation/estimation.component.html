@@ -9,14 +9,7 @@
     <span *ngIf="correctValue !== undefined && correctValue !== selectedValue" i18n>Leider Falsch!</span>
   </mat-card-title>
   <mat-card-content class="estimation__content">
-    <div class="estimation__content-image">
-      <div [ngClass]="{'cropped-result': checked,'cropped-initial': !checked}">
-        <img *ngIf="imageSrc$ | async as imageSrc; else loadingImage" #estimationImage [src]="imageSrc | safe" />
-        <ng-template #loadingImage>
-          <mat-spinner class="loading"></mat-spinner>
-        </ng-template>
-      </div>
-    </div>
+    <geoml-estimation-image [task]="tasks[try]" [checked]="checked"></geoml-estimation-image>
     <div *ngIf="checked" class="estimation__bot-comment">
       <svg-icon name="bot"></svg-icon>
       <div *ngIf="correctValue !== selectedValue && correctValue===botValue" class="estimation__bot-comment-bubble"

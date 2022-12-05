@@ -1,0 +1,43 @@
+.cropped {
+  overflow: hidden;
+  width: 335px;
+  border-radius: 15px;
+
+  &.small {
+
+
+    width: 159px;
+    height: 142px;
+
+    img {
+      margin: -14px 0px 0px -25px;
+      width: 229px;
+    }
+  }
+
+  &-initial {
+    @extend .cropped;
+    height: 335px;
+
+    img {
+      margin: -27px 0px 0px -92px;
+      width: 519px
+    }
+  }
+
+  &-result {
+    @extend .cropped;
+    height: 303px;
+
+    img {
+      margin: -33px 0px 0px -58px;
+      width: 488px;
+    }
+  }
+
+
+  .loading {
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+  }
+}

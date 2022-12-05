@@ -30,7 +30,6 @@ export class EstimationComponent implements OnDestroy {
 
   tasks$!: Promise<string[]>;
   lastCheck$?: Promise<Check>;
-  imageSrc$?: Promise<string>;
 
   @ViewChild('estimationImage') el?: ElementRef;
 
@@ -42,7 +41,6 @@ export class EstimationComponent implements OnDestroy {
   ) {
     this.tasks$ = this.gameService.randomTasks$.then((tasks) => {
       this.currentTask = tasks[0];
-      this.loadImage(this.currentTask);
       return tasks;
     });
   }
@@ -57,7 +55,6 @@ export class EstimationComponent implements OnDestroy {
     if (this.selectedValue !== undefined) {
       this.checked = true;
       this.currentTask = task;
-      this.loadImage(task);
       this.lastCheck$ = this.gameService.checkTask(task, this.selectedValue).then((check: Check) => {
         this.pointGain = check.humanPoints;
         this.humanPoints = this.gameService.humanScore;
@@ -81,7 +78,6 @@ export class EstimationComponent implements OnDestroy {
       this.checked = false;
       this.try++;
       this.currentTask = nextTask;
-      this.loadImage(this.currentTask);
     } else {
       this.router.navigate(['result']);
     }
@@ -96,9 +92,5 @@ export class EstimationComponent implements OnDestroy {
         });
       });
     }
-  }
-
-  loadImage(task: string) {
-    this.imageSrc$ = this.gameService.loadImage(task, this.checked);
   }
 }

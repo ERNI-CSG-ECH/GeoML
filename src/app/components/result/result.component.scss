@@ -149,6 +149,18 @@
       }
     }
 
+    ::ng-deep .mat-expansion-panel {
+      box-shadow: unset;
+
+      &-body {
+        padding: unset;
+
+        geoml-result-card {
+          padding: 12px 0;
+        }
+      }
+    }
+
     &-info {
       background-color: map.get($geoml-primary, 100);
       border-radius: 10px;

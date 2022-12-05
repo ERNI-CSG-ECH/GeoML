@@ -25,6 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { EstimationValuesComponent } from './components/estimation-values/estimation-values.component';
+import { EstimationImageComponent } from './components/estimation-image/estimation-image.component';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -51,6 +52,7 @@ export const FIREBASE_MODULES = [
     SafePipe,
     ResultCardComponent,
     EstimationValuesComponent,
+    EstimationImageComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

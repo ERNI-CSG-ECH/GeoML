@@ -11,6 +11,7 @@ $geoml-theme: mat.define-light-theme((color: (primary: $geoml-primary,
 $theming-material-typography: mat.define-typography-config($font-family: 'Source Sans Pro',
   );
 @include mat.core($theming-material-typography);
+@include mat.all-component-themes($geoml-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -31,3 +32,6 @@ body {
 .spacer {
   flex: 1 1 auto;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
