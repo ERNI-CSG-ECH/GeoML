@@ -1,7 +1,15 @@
 <mat-card class="result-card">
   <div class="result-card__left">
-    <div class="result-card__human"></div>
-    <div class="result-card__bot"></div>
+    <div class="result-card__human">
+      <span i18n>Ihre Punkte</span>
+      <h2>{{check.humanPoints}}</h2>
+    </div>
+    <div class="result-card__bot">
+      <svg-icon name="bot"></svg-icon>
+      <span>Punkte</span>
+      <h3>{{check.botPoints}}</h3>
+    </div>
+    <div class="spacer"></div>
     <geoml-estimation-values [small]="true" [correctValue]="check.correct" [botValue]="check.botGuess"
       [selectedValue]="check.humanGuess"></geoml-estimation-values>
   </div>

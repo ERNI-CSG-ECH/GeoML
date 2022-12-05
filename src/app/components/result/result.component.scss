@@ -127,6 +127,7 @@
       }
 
       &-bot {
+        color: map.get($geoml-primary, 700);
         svg {
           width: 23px;
           height: 23px;
@@ -137,7 +138,6 @@
           font-weight: 700;
           font-size: 35px;
           line-height: 44px;
-          color: map.get($geoml-primary, 700);
         }
 
         .total {
