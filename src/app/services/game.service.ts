@@ -47,12 +47,11 @@ export class GameService {
   }
 
   getResult(): Result {
-    return MOCK_DATA;
-    /*     return {
+    return {
       humanTotal: this.humanScore,
       botTotal: this.botScore,
       checks: this.checks,
-    }; */
+    };
   }
 
   getInfo(taskId: string): Promise<InformationData> {
