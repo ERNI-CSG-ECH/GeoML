@@ -64,7 +64,7 @@ export class EstimationComponent implements OnDestroy {
         this.showPointGain = true;
         setTimeout(() => {
           this.showPointGain = false;
-        }, 1000);
+        }, 5000);
 
         return check;
       });

@@ -1,8 +1,5 @@
 <mat-card *ngIf="tasks$ | async as tasks" class="estimation">
-  <div class="estimation__progress">
-    <span *ngFor="let task of tasks; let idx = index" class="estimation__progress-step"
-      [ngClass]="{'active': idx <= try}"></span>
-  </div>
+  <geoml-header [activeStep]="try"></geoml-header>
   <mat-card-title class="estimation__title" [ngClass]="{'checked': checked}">
     <span *ngIf="correctValue === undefined" i18n>Wie hoch schätzen Sie hier das Risiko ein?</span>
     <span *ngIf="correctValue !== undefined && correctValue === selectedValue" i18n>Richtig!</span>

@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ResultCardComponent } from './components/result-card/result-card.component';
 import { EstimationValuesComponent } from './components/estimation-values/estimation-values.component';
 import { EstimationImageComponent } from './components/estimation-image/estimation-image.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -53,6 +54,7 @@ export const FIREBASE_MODULES = [
     ResultCardComponent,
     EstimationValuesComponent,
     EstimationImageComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

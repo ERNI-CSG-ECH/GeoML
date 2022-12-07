@@ -14,25 +14,6 @@
   min-height: 645px;
   color: map.get($geoml-primary, 700);
 
-  &__progress {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 24px 0;
-
-    &-step {
-      background-color: map.get($geoml-primary, 300);
-      border-radius: 20px;
-      height: 6px;
-      width: 25px;
-      margin: 0 5px;
-
-      &.active {
-        background-color: map.get($geoml-primary, 400);
-      }
-    }
-  }
-
   &__title {
     display: flex;
     align-items: flex-end;
@@ -140,7 +121,10 @@
 
       span {
         transition: color 2000ms cubic-bezier(0.25, 0.8, 0.25, 1);
-        padding-left: 2px;
+        color: transparentize(map.get($geoml-primary, 700), 0.4);
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 13px;
 
         &.hidden {
           color: white;

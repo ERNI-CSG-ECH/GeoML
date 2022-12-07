@@ -1,0 +1,25 @@
+
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
+
+.header{
+  &__progress {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 24px 0;
+
+    &-step {
+      background-color: transparentize(map.get($geoml-primary, 400), 0.8);
+      border-radius: 20px;
+      height: 6px;
+      width: 25px;
+      margin: 0 5px;
+
+      &.active {
+        background-color: map.get($geoml-primary, 400);
+      }
+    }
+  }
+
+}

@@ -1,0 +1,4 @@
+<div *ngIf="activeStep !== undefined" class="header__progress">
+  <span *ngFor="let step of [0, 1, 2, 3, 4]" class="header__progress-step"
+    [ngClass]="{'active': step <= activeStep}"></span>
+</div>
