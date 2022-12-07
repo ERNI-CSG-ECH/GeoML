@@ -20,5 +20,7 @@ export class AppComponent {
     this.iconReg.loadSvg('../../../assets/icons/facebook.svg', 'facebook')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/twitter.svg', 'twitter')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/linkedin.svg', 'linkedin')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/book.svg', 'book')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/erni.svg', 'erni')?.pipe(take(1)).subscribe();
   }
 }

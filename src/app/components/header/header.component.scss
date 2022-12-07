@@ -1,8 +1,18 @@
-
 @use "sass:map";
 @use '../../../assets/styles/variables' as *;
 
-.header{
+.header {
+  display: flex;
+  height: 54px;
+  align-items: center;
+  padding-right: 16px;
+
+  a,
+  button {
+    width: 25px;
+    height: 25px;
+  }
+
   &__progress {
     display: flex;
     flex-direction: row;

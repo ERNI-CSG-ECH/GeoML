@@ -27,6 +27,7 @@ import { ResultCardComponent } from './components/result-card/result-card.compon
 import { EstimationValuesComponent } from './components/estimation-values/estimation-values.component';
 import { EstimationImageComponent } from './components/estimation-image/estimation-image.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ExplanationComponent } from './components/explanation/explanation.component';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -55,6 +56,7 @@ export const FIREBASE_MODULES = [
     EstimationValuesComponent,
     EstimationImageComponent,
     HeaderComponent,
+    ExplanationComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,4 +1,10 @@
-<div *ngIf="activeStep !== undefined" class="header__progress">
-  <span *ngFor="let step of [0, 1, 2, 3, 4]" class="header__progress-step"
-    [ngClass]="{'active': step <= activeStep}"></span>
+<div class="header">
+  <button mat-icon-button (click)="openExplanation()"><svg-icon name="book"></svg-icon></button>
+  <div class="spacer"></div>
+  <div *ngIf="activeStep !== undefined" class="header__progress">
+    <span *ngFor="let step of [0, 1, 2, 3, 4]" class="header__progress-step"
+      [ngClass]="{'active': step <= activeStep}"></span>
+  </div>
+  <div class="spacer"></div>
+  <a href="https://www.betterask.erni/" mat-icon-button><svg-icon name="erni"></svg-icon></a>
 </div>
