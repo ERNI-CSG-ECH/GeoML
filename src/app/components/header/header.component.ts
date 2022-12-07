@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   openExplanation(): void {
-    this.dialog.open(ExplanationComponent);
+    this.dialog.open(ExplanationComponent, {
+      minWidth: '351px',
+    });
   }
 }

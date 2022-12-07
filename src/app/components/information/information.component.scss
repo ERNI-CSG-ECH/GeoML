@@ -1,7 +1,7 @@
 @use "sass:map";
 @use '../../../assets/styles/variables' as *;
 
-::ng-deep .mat-dialog-container {
+::ng-deep .mat-dialog-container:has(.information) {
   padding: 0 0 24px;
   overflow: hidden;
   background-color: $light-contrast;

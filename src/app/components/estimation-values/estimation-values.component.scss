@@ -46,18 +46,22 @@
 
     &-badge {
       position: absolute;
-      left: 22px;
-      bottom: 22px;
+      left: 34px;
+      bottom: 30px;
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
 
     .small+&-badge {
-      left: 10px;
-      bottom: 6px;
+      left: 18px;
+      bottom: 12px;
 
       svg {
 
-        width: 30px;
-        height: 30px;
+        width: 18px;
+        height: 18px;
       }
     }
   }

@@ -1,0 +1,49 @@
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
+
+::ng-deep .mat-dialog-container:has(.explanation) {
+  border-radius: 15px;
+}
+
+.explanation {
+  color: map.get($geoml-primary, 700);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 110%;
+      margin: unset;
+    }
+
+    mat-icon {
+      font-size: 36px;
+      width: 36px;
+      height: 36px;
+      font-weight: 800;
+    }
+  }
+
+  &__content {
+    td {
+      vertical-align: top;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 120%;
+      padding: 0 16px;
+    }
+  }
+}

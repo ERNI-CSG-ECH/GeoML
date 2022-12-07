@@ -1,1 +1,28 @@
-<p>explanation works!</p>
+<div class="explanation">
+  <div class="explanation__header">
+    <h2 i18n>Erläuterung</h2>
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <table class="explanation__content">
+    <tr>
+      <td>
+        <svg-icon name="bot-pin"></svg-icon>
+      </td>
+      <td>
+        <p i18n>Sehen Sie anhand dieses Icons, welches Risiko unser Algorithmus auf den gezeigten Strassen einschätzt.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img [src]="'../assets/images/riskbar.png'">
+      </td>
+      <td>
+        <p i18n>Diese Skalierung zeigt Ihnen auf, <b>wie vielbefahren</b> die gezeigten Strassen sind.<br><br>
+          Dies wird anhand der <b>insgesamten Strecke</b> der gezeigten Strassen und der Anzahl <b>Autos, die pro Tag</b> auf diesen Strassen unterwegs sind, berechnet.</p>
+      </td>
+    </tr>
+  </table>
+</div>
