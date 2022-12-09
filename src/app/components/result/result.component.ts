@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { AppSettings } from 'src/app/config/settings';
@@ -17,6 +17,8 @@ export class ResultComponent implements OnInit {
   result!: Result;
   imageSrc$: Observable<string[]>;
 
+  @ViewChild('results', { read: ElementRef }) resultCardEl!: ElementRef;
+
   constructor(private router: Router, private gameService: GameService) {
     this.result = this.gameService.getResult();
     this.imageSrc$ = combineLatest(
@@ -31,5 +33,9 @@ export class ResultComponent implements OnInit {
   reset(): void {
     this.gameService.reset();
     this.router.navigate(['']);
+  }
+
+  scrollToResult(): void {
+    this.resultCardEl.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 }

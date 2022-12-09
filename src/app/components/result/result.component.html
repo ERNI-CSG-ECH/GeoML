@@ -20,50 +20,49 @@
         <span class="total">/80</span>
       </div>
     </div>
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header class="result__button-container">
-          <mat-panel-title>
-            <button mat-flat-button class="result__button-flat">
-              <svg-icon name="arrow" class="rotate-90 huge"></svg-icon>
-              <p>Zur Übersicht Ihrer Resultate</p>
-            </button>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <geoml-result-card *ngFor="let check of result.checks" [check]="check"></geoml-result-card>
-      </mat-expansion-panel>
-    </mat-accordion>
+    <button mat-flat-button class="result__button-flat" (click)="scrollToResult()">
+      <svg-icon name="arrow" class="rotate-90 huge"></svg-icon>
+      <p>Zur Übersicht Ihrer Resultate</p>
+    </button>
   </mat-card-content>
+  <mat-card class="result__content-info">
+    <div i18n *ngIf="result.humanTotal < result.botTotal">
+      <p>Sind Sie überrascht, dass der Algorithmus tendenziell genauer war als Sie?</p>
+      <h4>Teilen Sie dieses Ergebnis!</h4>
+    </div>
+    <div i18n *ngIf="result.humanTotal >= result.botTotal">
+      <h3>Herzlichen Glückwunsch!</h3>
+      <p>Sie haben das neurale Netz geschlagen. Damit gehören Sie zu wenigen User, die das geschafft haben.</p>
+      <h4>Teilen Sie dieses Ergebnis!</h4>
+    </div>
+    <div class="result__content-info-share">
+      <button mat-icon-button>
+        <svg-icon name="linkedin"></svg-icon>
+      </button>
+      <button mat-icon-button>
+        <svg-icon name="facebook"></svg-icon>
+      </button>
+      <button mat-icon-button>
+        <svg-icon name="twitter"></svg-icon>
+      </button>
+    </div>
+    <div class="result__content-info-links">
+      <div class="divider"></div>
+      <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
+      <geoml-button [link]="{key: 'https://www.betterask.erni/', value: aboutText}"></geoml-button>
+    </div>
+  </mat-card>
+  <div class="result__results" #results>
+    <h2 i18n>Übersicht Ihre Resultate</h2>
+    <geoml-result-card *ngFor="let check of result.checks" [check]="check"></geoml-result-card>
+  </div>
   <mat-card-actions class="result__actions">
-    <mat-card class="result__content-info">
-      <div i18n *ngIf="result.humanTotal < result.botTotal">
-        <p>Sind Sie überrascht, dass der Algorithmus tendenziell genauer war als Sie?</p>
-        <h4>Teilen Sie dieses Ergebnis!</h4>
-      </div>
-      <div i18n *ngIf="result.humanTotal >= result.botTotal">
-        <h3>Herzlichen Glückwunsch!</h3>
-        <p>Sie haben das neurale Netz geschlagen. Damit gehören Sie zu wenigen User, die das geschafft haben.</p>
-        <h4>Teilen Sie dieses Ergebnis!</h4>
-      </div>
-      <div class="result__content-info-share">
-        <button mat-icon-button>
-          <svg-icon name="linkedin"></svg-icon>
-        </button>
-        <button mat-icon-button>
-          <svg-icon name="facebook"></svg-icon>
-        </button>
-        <button mat-icon-button>
-          <svg-icon name="twitter"></svg-icon>
-        </button>
-      </div>
-      <div class="result__content-info-links">
-        <div class="divider"></div>
-        <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
-        <geoml-button [link]="{key: 'https://www.betterask.erni/', value: aboutText}"></geoml-button>
-        <div class="divider"></div>
-        <p class="big" i18n>Oder versuchen sie es noch einmal</p>
-        <geoml-button (clicked)="reset()" [secondary]="true" i18n>Neuer Versuch</geoml-button>
-      </div>
-    </mat-card>
+    <div class="result__content-info-links">
+      <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
+      <geoml-button [link]="{key: 'https://www.betterask.erni/', value: aboutText}"></geoml-button>
+      <div class="divider"></div>
+      <p class="big" i18n>Oder versuchen sie es noch einmal</p>
+      <geoml-button (clicked)="reset()" [secondary]="true" i18n>Neuer Versuch</geoml-button>
+    </div>
   </mat-card-actions>
 </mat-card>
