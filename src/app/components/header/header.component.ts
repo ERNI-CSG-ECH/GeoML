@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   openExplanation(): void {
     this.dialog.open(ExplanationComponent, {
       minWidth: '351px',
+      maxWidth: '370px',
     });
   }
 }

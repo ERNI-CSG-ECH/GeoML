@@ -12,10 +12,7 @@ import { GameService } from 'src/app/services/game.service';
 })
 export class ResultComponent implements OnInit {
   apiEndpoint = AppSettings.API_ENDPOINT;
-  mockScore: { human: number; bot: number } = {
-    human: 16,
-    bot: 8,
-  };
+  aboutText = $localize`Mehr erfahren`;
 
   result!: Result;
   imageSrc$: Observable<string[]>;

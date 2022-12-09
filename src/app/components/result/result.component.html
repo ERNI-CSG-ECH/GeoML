@@ -59,10 +59,10 @@
       <div class="result__content-info-links">
         <div class="divider"></div>
         <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
-        <a href="https://www.betterask.erni/" mat-raised-button i18n class="result__actions-reset">Mehr erfahren</a>
+        <geoml-button [link]="{key: 'https://www.betterask.erni/', value: aboutText}"></geoml-button>
         <div class="divider"></div>
         <p class="big" i18n>Oder versuchen sie es noch einmal</p>
-        <button mat-raised-button i18n class="result__actions-reset" (click)="reset()">Neuer Versuch</button>
+        <geoml-button (clicked)="reset()" [secondary]="true" i18n>Neuer Versuch</geoml-button>
       </div>
     </mat-card>
   </mat-card-actions>

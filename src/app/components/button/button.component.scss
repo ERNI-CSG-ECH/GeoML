@@ -1,0 +1,28 @@
+@use "sass:map";
+@use '../../../assets/styles/variables' as *;
+
+.button {
+      border-radius: 100px;
+      width: fit-content;
+      height: 42px;
+      min-width: 134px;
+      background: map.get($geoml-primary, 400);
+      color: $light-contrast;
+      box-shadow: unset !important;
+
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 20px;
+
+      &.secondary {
+        background-color: $light-contrast;
+        color: map.get($geoml-primary, 700);
+        border: 2px solid map.get($geoml-primary, 700);
+      }
+
+      &.link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }

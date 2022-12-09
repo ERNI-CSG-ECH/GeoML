@@ -131,28 +131,13 @@
         }
       }
     }
-
-    &-next {
-      border-radius: 100px;
-      width: 134px;
-      height: 42px;
-      background: map.get($geoml-primary, 400);
-      color: $light-contrast;
-      box-shadow: unset !important;
-
-      font-weight: 600;
-      font-size: 17px;
-      line-height: 20px;
-
-      &.check {
-        background-color: $light-contrast;
-        color: map.get($geoml-primary, 700);
-        border: 2px solid map.get($geoml-primary, 700);
-      }
-    }
   }
 
-  ::ng-deep &.mat-card>.mat-card-actions:last-child {
-    margin-bottom: 0;
+  ::ng-deep &.mat-card {
+    background-color: transparent;
+
+    >.mat-card-actions:last-child {
+      margin-bottom: 0;
+    }
   }
 }

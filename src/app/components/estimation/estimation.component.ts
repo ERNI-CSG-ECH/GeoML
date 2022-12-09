@@ -88,6 +88,7 @@ export class EstimationComponent implements OnDestroy {
       this.gameService.getInfo(this.currentTask).then((data) => {
         this.dialog.open(InformationComponent, {
           minWidth: '351px',
+          maxWidth: '370px',
           data,
         });
       });

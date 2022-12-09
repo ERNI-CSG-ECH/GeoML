@@ -31,7 +31,7 @@
     }
 
 
-    filter: drop-shadow(0px 0px 3px map.get($geoml-primary, 300));
+    filter: drop-shadow(0px 0px 10px transparentize(map.get($geoml-primary, 700), 0.8));
     background: #FFFFFF;
     box-shadow: unset !important;
     color: map.get($geoml-primary, 700);
@@ -67,7 +67,6 @@
   }
 
   &-selected {
-    filter: unset;
     background: map.get($geoml-primary, 300);
     border: 1px solid map.get($geoml-primary, 300);
     color: #FFFFFF;
@@ -77,7 +76,6 @@
     pointer-events: none;
 
     &-correct {
-      filter: unset;
       background: map.get($geoml-primary, A300);
       border: 5px solid map.get($geoml-primary, A500);
       color: #FFFFFF;
@@ -88,7 +86,6 @@
     }
 
     &-false {
-      filter: unset;
       background: map.get(map.get($geoml-primary, contrast), A300);
       border: 5px solid map.get(map.get($geoml-primary, contrast), A500);
 
@@ -100,7 +97,6 @@
     }
 
     &-true {
-      filter: unset;
       background: map.get($geoml-primary, A300);
       border: unset;
       color: #FFFFFF;

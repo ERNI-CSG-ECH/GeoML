@@ -1,0 +1,11 @@
+<ng-container *ngIf="link; else button">
+  <a [href]="link.key" target="_blank" mat-raised-button class="button link">
+      {{link.value}}
+  </a>
+</ng-container>
+
+<ng-template #button>
+  <button mat-raised-button class="button" [ngClass]="{'secondary': secondary}" (click)="clicked.emit()">
+    <ng-content></ng-content>
+  </button>
+</ng-template>
