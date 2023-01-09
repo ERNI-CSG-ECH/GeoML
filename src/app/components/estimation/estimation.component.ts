@@ -23,6 +23,7 @@ export class EstimationComponent implements OnDestroy {
   humanPoints?: number;
   pointGain?: number;
   showPointGain = false;
+  showTutorial = true;
 
   checkText = $localize`Überprüfen`;
   nextText = $localize`Weiter`;
@@ -43,6 +44,7 @@ export class EstimationComponent implements OnDestroy {
       this.currentTask = tasks[0];
       return tasks;
     });
+    this.showTutorial = !this.gameService.tutorialWatched;
   }
 
   ngOnDestroy(): void {
@@ -93,5 +95,10 @@ export class EstimationComponent implements OnDestroy {
         });
       });
     }
+  }
+
+  onTutorialSkipped(): void {
+    this.showTutorial = false;
+    this.gameService.watchedTutorial();
   }
 }

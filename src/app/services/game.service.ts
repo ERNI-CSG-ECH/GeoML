@@ -11,6 +11,7 @@ export class GameService {
   humanScore = 0;
   botScore = 0;
   checks: Check[] = [];
+  tutorialWatched = false;
 
   randomTasks$: Promise<string[]>;
 
@@ -72,6 +73,10 @@ export class GameService {
 
   loadImage(task: string, checked: boolean): Promise<string> {
     return this.storage.storage.ref(`images/${task}_${checked ? 'result' : 'initial'}.png`).getDownloadURL();
+  }
+
+  watchedTutorial(): void {
+    this.tutorialWatched = true;
   }
 
   private loadRandomTasks(): Promise<string[]> {

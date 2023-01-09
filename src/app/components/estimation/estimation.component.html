@@ -1,4 +1,4 @@
-<geoml-tutorial></geoml-tutorial>
+<geoml-tutorial *ngIf="showTutorial" (skipped)="onTutorialSkipped()"></geoml-tutorial>
 <mat-card *ngIf="tasks$ | async as tasks" class="estimation">
   <geoml-header [activeStep]="try"></geoml-header>
   <mat-card-title class="estimation__title" [ngClass]="{'checked': checked}">

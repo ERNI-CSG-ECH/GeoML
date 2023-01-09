@@ -1,12 +1,12 @@
-<iframe *ngIf="false" width="350" height="650" src="https://www.youtube.com/embed/ajF-6UGMbiE"
+<iframe *ngIf="playVideo" width="380" height="680" src="https://www.youtube.com/embed/ajF-6UGMbiE"
   title="GeoML Tutorial" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<div class="tutorial">
-  <div class="tutorial__button-play">
+<div *ngIf="!playVideo" class="tutorial">
+  <div class="tutorial__button-play" (click)="playVideo=true">
     <mat-icon>play_circle</mat-icon>
     <span i18n>Erklärvideo abspielen</span>
   </div>
-  <button mat-flat-button class="tutorial__button-skip">
-   <span i18n>Überspringen</span>
-   <svg-icon name="arrow"></svg-icon>
-  </button>
 </div>
+<button mat-flat-button class="tutorial__button-skip" [ngClass]="{'background': playVideo}" (click)="skipped.emit()">
+  <span i18n>Überspringen</span>
+  <svg-icon name="arrow"></svg-icon>
+</button>

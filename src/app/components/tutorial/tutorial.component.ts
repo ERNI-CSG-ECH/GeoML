@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'geoml-tutorial',
   templateUrl: './tutorial.component.html',
-  styleUrls: ['./tutorial.component.scss']
+  styleUrls: ['./tutorial.component.scss'],
 })
 export class TutorialComponent implements OnInit {
+  playVideo = false;
 
-  constructor() { }
+  @Output() skipped = new EventEmitter<void>();
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }
