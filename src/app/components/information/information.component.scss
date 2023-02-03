@@ -4,7 +4,7 @@
 ::ng-deep .mat-dialog-container:has(.information) {
   padding: 0 0 24px;
   overflow: hidden;
-  background-color: $light-contrast;
+  background: map.get($geoml-primary, 200);
 }
 
 .information {

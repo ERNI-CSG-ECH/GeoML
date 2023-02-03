@@ -15,7 +15,7 @@
       line-height: 20px;
 
       &.secondary {
-        background-color: $light-contrast;
+        background-color: transparent;
         color: map.get($geoml-primary, 700);
         border: 2px solid map.get($geoml-primary, 700);
       }
