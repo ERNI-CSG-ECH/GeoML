@@ -48,20 +48,20 @@
     </div>
     <div class="result__content-info-links">
       <div class="divider"></div>
-      <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
+      <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assessment</p>
       <geoml-button [link]="{key: 'https://page-preview.instapage.com/preview/386c538830818f67666a50a4cd2cd68919a6d6e9c807c5d22cbfdffd4613f924?pageVersion=newest&controlVariation=A&variation=A&featureMode=2&displayMode=0', value: aboutText}"></geoml-button>
     </div>
   </mat-card>
   <div class="result__results" #results>
-    <h2 i18n>Übersicht Ihre Resultate</h2>
+    <h2 i18n>Übersicht Ihrer Resultate</h2>
     <geoml-result-card *ngFor="let check of result.checks" [check]="check"></geoml-result-card>
   </div>
   <mat-card-actions class="result__actions">
     <div class="result__content-info-links">
-      <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assesment</p>
+      <p class="big" i18n>Erfahren Sie mehr über dieses Risiko-Assessment</p>
       <geoml-button [link]="{key: 'https://page-preview.instapage.com/preview/386c538830818f67666a50a4cd2cd68919a6d6e9c807c5d22cbfdffd4613f924?pageVersion=newest&controlVariation=A&variation=A&featureMode=2&displayMode=0', value: aboutText}"></geoml-button>
       <div class="divider"></div>
-      <p class="big" i18n>Oder versuchen sie es noch einmal</p>
+      <p class="big" i18n>Oder versuchen Sie es noch einmal</p>
       <geoml-button (clicked)="reset()" [secondary]="true" i18n>Neuer Versuch</geoml-button>
     </div>
   </mat-card-actions>
