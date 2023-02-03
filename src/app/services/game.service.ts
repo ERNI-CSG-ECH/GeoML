@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { combineLatest, map, Observable } from 'rxjs';
 import { Check, InformationData, MOCK_DATA, Result, TaskData } from '../model/game';
 
 @Injectable({
@@ -13,9 +15,14 @@ export class GameService {
   checks: Check[] = [];
   tutorialWatched = false;
 
-  randomTasks$: Promise<string[]>;
+  randomTasks$: Observable<string[]>;
 
-  constructor(private http: HttpClient, private database: AngularFireDatabase, private storage: AngularFireStorage) {
+  constructor(
+    private http: HttpClient,
+    private database: AngularFireDatabase,
+    private storage: AngularFireStorage,
+    private auth: AngularFireAuth
+  ) {
     this.randomTasks$ = this.loadRandomTasks();
   }
 
@@ -79,19 +86,33 @@ export class GameService {
     this.tutorialWatched = true;
   }
 
-  private loadRandomTasks(): Promise<string[]> {
-    return this.database.database
-      .ref('data')
-      .get()
-      .then((snapshot) => {
-        const randomTasks: string[] = [];
-        const allTasks = snapshot.toJSON() as { [id: string]: TaskData };
-        const numberOfTasks = Object.keys(allTasks).length;
-        for (let i = 0; i < 5; i++) {
-          const randomIdx = Math.floor(Math.random() * numberOfTasks);
-          randomTasks.push(Object.keys(allTasks)[randomIdx]);
+  private loadRandomTasks(): Observable<string[]> {
+    return combineLatest([this.signIn(), this.database.database.ref('data').get()]).pipe(
+      map(([signedIn, snapshot]) => {
+        if (signedIn) {
+          const randomTasks: string[] = [];
+          const allTasks = snapshot.toJSON() as { [id: string]: TaskData };
+          const numberOfTasks = Object.keys(allTasks).length;
+          for (let i = 0; i < 5; i++) {
+            const randomIdx = Math.floor(Math.random() * numberOfTasks);
+            randomTasks.push(Object.keys(allTasks)[randomIdx]);
+          }
+          return randomTasks;
+        } else {
+          throw new Error('Could not sign in anonymously');
         }
-        return randomTasks;
+      })
+    );
+  }
+
+  private signIn(): Promise<boolean> {
+    return this.auth
+      .signInAnonymously()
+      .then(() => {
+        return true;
+      })
+      .catch(() => {
+        return false;
       });
   }
 }

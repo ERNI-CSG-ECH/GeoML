@@ -17,7 +17,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { InformationComponent } from './components/information/information.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { environment } from '../environments/environment';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { MatInputModule } from '@angular/material/input';
@@ -44,6 +44,7 @@ export const MATERIAL_MODULES = [
 ];
 export const FIREBASE_MODULES = [
   AngularFireModule.initializeApp(environment.firebase),
+  AngularFireAuthModule,
   AngularFireDatabaseModule,
   AngularFireStorageModule,
 ];

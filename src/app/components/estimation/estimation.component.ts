@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { Check } from 'src/app/model/game';
 import { GameService } from 'src/app/services/game.service';
 import { InformationComponent } from '../information/information.component';
@@ -29,7 +29,7 @@ export class EstimationComponent implements OnDestroy {
   nextText = $localize`Weiter`;
   resultText = $localize`Abschliessen`;
 
-  tasks$!: Promise<string[]>;
+  tasks$!: Observable<string[]>;
   lastCheck$?: Promise<Check>;
 
   @ViewChild('estimationImage') el?: ElementRef;
@@ -40,10 +40,12 @@ export class EstimationComponent implements OnDestroy {
     private dialog: MatDialog,
     private cdr: ChangeDetectorRef
   ) {
-    this.tasks$ = this.gameService.randomTasks$.then((tasks) => {
-      this.currentTask = tasks[0];
-      return tasks;
-    });
+    this.tasks$ = this.gameService.randomTasks$.pipe(
+      map((tasks) => {
+        this.currentTask = tasks[0];
+        return tasks;
+      })
+    );
     this.showTutorial = !this.gameService.tutorialWatched;
   }
 
