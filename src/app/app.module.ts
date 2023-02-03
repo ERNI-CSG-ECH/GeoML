@@ -30,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ExplanationComponent } from './components/explanation/explanation.component';
 import { ButtonComponent } from './components/button/button.component';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { MapComponent } from './components/map/map.component';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -61,6 +62,7 @@ export const FIREBASE_MODULES = [
     ExplanationComponent,
     ButtonComponent,
     TutorialComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

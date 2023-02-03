@@ -4,7 +4,7 @@
       <mat-icon>close</mat-icon>
     </button>
   </div>
-  <iframe [src]='getMap() | safe' name="IframeGeoadmin"></iframe>
+  <geoml-map [center]="[data.xCoords + coordsOffset, data.yCoords - coordsOffset]"></geoml-map>
 </div>
 <div class="information">
   <div class="information__column left">
