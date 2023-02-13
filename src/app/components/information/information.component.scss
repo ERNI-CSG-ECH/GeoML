@@ -57,14 +57,20 @@
       table {
         width: 100%;
 
-        >tr:nth-child(1) {
+        >tr.bold {
           font-weight: 700;
           font-size: 25px;
           line-height: 31px;
         }
 
-        >tr:not:first-child {
-          >td:nth-child(2) {
+        >tr:not(.bold) {
+          >td:nth-child(1) {
+            width: 10px;
+            ::ng-deep svg {
+              width: 10px
+            }
+          }
+          >td:nth-child(2):not(.bold) {
             font-weight: 400;
             font-size: 17px;
             line-height: 110%;

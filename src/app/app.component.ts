@@ -22,5 +22,8 @@ export class AppComponent {
     this.iconReg.loadSvg('../../../assets/icons/linkedin.svg', 'linkedin')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/book.svg', 'book')?.pipe(take(1)).subscribe();
     this.iconReg.loadSvg('../../../assets/icons/erni.svg', 'erni')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/light.svg', 'light')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/sever.svg', 'sever')?.pipe(take(1)).subscribe();
+    this.iconReg.loadSvg('../../../assets/icons/lethal.svg', 'lethal')?.pipe(take(1)).subscribe();
   }
 }

@@ -21,27 +21,27 @@
   </div>
   <div class="information__column right">
     <table>
-      <tr>
+      <tr class="bold">
         <td colspan="2" i18n>Unfälle</td>
         <td>{{data.accidentLethal + data.accidentLight + data.accidentSever}}</td>
       </tr>
       <tr>
         <td>
-          <div class="information__circle yellow"></div>
+          <svg-icon name="light"></svg-icon>
         </td>
         <td i18n>Leicht</td>
         <td>{{data.accidentLight}}</td>
       </tr>
       <tr>
         <td>
-          <div class="information__circle orange"></div>
+          <svg-icon name="sever"></svg-icon>
         </td>
         <td i18n>Schwer</td>
         <td>{{data.accidentSever}}</td>
       </tr>
       <tr>
         <td>
-          <div class="information__circle red"></div>
+          <svg-icon name="lethal"></svg-icon>
         </td>
         <td i18n>Tödlich</td>
         <td>{{data.accidentLethal}}</td>
