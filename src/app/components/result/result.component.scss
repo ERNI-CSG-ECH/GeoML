@@ -191,6 +191,7 @@
 
         ::ng-deep .mat-icon-button {
           width: fit-content;
+          border-radius: unset;
 
           span {
             font-size: 34px;
