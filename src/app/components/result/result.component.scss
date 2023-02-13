@@ -130,7 +130,7 @@
       &-bot {
         color: map.get($geoml-primary, 700);
 
-        svg {
+        ::ng-deep svg {
           width: 23px;
           height: 23px;
         }
