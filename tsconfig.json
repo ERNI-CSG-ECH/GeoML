@@ -23,7 +23,15 @@
       "es2020",
       "dom"
     ],
-    "typeRoots": ["node_modules/@angular/material"]
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@angular/material",
+    ],
+    "types": [
+      "@angular/localize",
+      "jest",
+      "jasmine"
+    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
