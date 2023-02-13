@@ -49,17 +49,25 @@
         background-color: transparentize(map.get($geoml-primary, 700), 0.1);
       }
 
-      svg {
-        transform: rotate(180deg);
-        padding-right: 6px;
-        height: 16px;
+      ::ng-deep .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+        color: $light-contrast;
+        word-break: break-word;
+        white-space: pre-wrap;
 
-        &-icon {
-          line-height: 0px;
-        }
+        svg {
+          padding-right: 6px;
+          height: 16px;
 
-        &>path {
-          fill: white;
+          &-icon {
+            line-height: 0px;
+            transform: rotate(180deg);
+          }
+
+          &>path {
+            fill: white;
+          }
         }
       }
     }
