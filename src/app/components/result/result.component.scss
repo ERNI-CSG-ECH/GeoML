@@ -28,6 +28,7 @@
 .result {
   max-width: 320px;
   overflow: overlay;
+  overflow: auto;
   height: 90vh;
   background: map.get($geoml-primary, 200);
 
