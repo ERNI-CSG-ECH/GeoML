@@ -37,13 +37,22 @@
     </div>
     <div class="result__content-info-share">
       <button mat-icon-button>
-        <svg-icon name="linkedin"></svg-icon>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=geoml.erni" target="_blank" mat-raised-button
+          class="button link">
+          <svg-icon name="linkedin"></svg-icon>
+        </a>
       </button>
       <button mat-icon-button>
-        <svg-icon name="facebook"></svg-icon>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=geoml.erni&quote={{shareMessage}}" target="_blank"
+          mat-raised-button class="button link">
+          <svg-icon name="facebook"></svg-icon>
+        </a>
       </button>
       <button mat-icon-button>
-        <svg-icon name="twitter"></svg-icon>
+        <a href="https://twitter.com/intent/tweet?text={{shareMessage}}&url=geoml.erni" target="_blank"
+          mat-raised-button class="button link">
+          <svg-icon name="twitter"></svg-icon>
+        </a>
       </button>
     </div>
     <div class="result__content-info-links">

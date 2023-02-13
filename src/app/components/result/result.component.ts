@@ -13,6 +13,7 @@ import { GameService } from 'src/app/services/game.service';
 export class ResultComponent implements OnInit {
   apiEndpoint = AppSettings.API_ENDPOINT;
   aboutText = $localize`Mehr erfahren`;
+  shareMessage = $localize`Fordere den Algorithmus heraus!`;
 
   result!: Result;
   imageSrc$: Observable<string[]>;

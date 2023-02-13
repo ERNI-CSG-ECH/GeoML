@@ -193,6 +193,11 @@
           width: fit-content;
           border-radius: unset;
 
+          a {
+            box-shadow: unset;
+            padding: unset;
+          }
+
           span {
             font-size: 34px;
           }
