@@ -6,13 +6,13 @@ First install NodeJS (Version 16.17.1 LTS [NodeJS](https://nodejs.org/en/)), the
 
 When pulling the update project first always run 'npm i'
 
-## Running server with deployed build localy
+## Running localy
 
-Run `npm run deploy` to start the server and visit `http://localhost:4000/` to start the game.
+Run `npm start` to start the server to serve the single application page and visit `http://localhost:4200/` to start the game. The data will be fetched from Firebase.
 
 ## Development server
 
-Run `node express/server.js` to start the server on `http://localhost:4000/`. Then run `npm start` in a second console for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files (src). Changes in `express` need a restart of the server.
+There is none. The data will always be feteched from Firebase.
 
 ## Code scaffolding
 
