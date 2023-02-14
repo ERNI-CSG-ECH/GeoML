@@ -31,7 +31,7 @@ export interface TaskData {
 
 
 export const MOCK_DATA = {
-  humanTotal: 30,
+  humanTotal: 31,
   botTotal: 73,
   checks: [
     { task: '001646', correct: 3, botGuess: 3, humanGuess: 1, botPoints: 16, humanPoints: 4 },
