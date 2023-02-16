@@ -1,0 +1,11 @@
+{
+  "xliffmergeOptions": {
+    "i18nFormat": "xlf",
+    "srcDir": "src/locale",
+    "genDir": "src/locale",
+    "defaultLanguage": "de",
+    "languages": ["en", "de"],
+    "beautifyOutput": true,
+    "preserveOrder": true
+  }
+}

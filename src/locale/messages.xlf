@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="de" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3088679460283000911" datatype="html">
+        <source>Wie hoch schätzen Sie hier das Risiko ein?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4369397112567094203" datatype="html">
+        <source>Richtig!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2622934742392115725" datatype="html">
+        <source>Leider falsch!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4504598103679516233" datatype="html">
+        <source>Diesmal bin ich richtig gelegen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="834262085333359404" datatype="html">
+        <source>Super! Wir sind beide richtig gelegen.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5070673357899253339" datatype="html">
+        <source>Sehr gut! Sie haben mich geschlagen.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="292716118499079528" datatype="html">
+        <source>Oh! Wir lagen beide falsch.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5323954786895517136" datatype="html">
+        <source>Sehr gering</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2097925580476217103" datatype="html">
+        <source>Sehr hoch</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2492917109117344161" datatype="html">
+        <source>Ihre Punkte</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result-card/result-card.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4280857387734440499" datatype="html">
+        <source>Überprüfen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="512114589853951663" datatype="html">
+        <source>Weiter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="245691605586110200" datatype="html">
+        <source>Abschliessen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/estimation/estimation.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1889824968712937500" datatype="html">
+        <source>Erläuterung</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/explanation/explanation.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9096711795502624016" datatype="html">
+        <source>Sehen Sie anhand dieses Icons, welches Risiko unser Algorithmus auf den gezeigten Strassen einschätzt. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/explanation/explanation.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8246189430115867156" datatype="html">
+        <source>Diese Skalierung zeigt Ihnen auf, <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>wie vielbefahren<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> die gezeigten Strassen sind.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/explanation/explanation.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2053926807814624461" datatype="html">
+        <source>Dies wird anhand der <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>insgesamten Strecke<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> der gezeigten Strassen und der Anzahl <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Autos<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>, die <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>pro Tag<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> auf diesen Strassen unterwegs sind, berechnet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/explanation/explanation.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7075749697380643559" datatype="html">
+        <source>pro Tag</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/information/information.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6232733815231700959" datatype="html">
+        <source>Unfälle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/information/information.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3480695325201508337" datatype="html">
+        <source>Leicht</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/information/information.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1193747404035158587" datatype="html">
+        <source>Schwer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/information/information.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1959785478898981519" datatype="html">
+        <source>Tödlich</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/information/information.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1327302134726196371" datatype="html">
+        <source>Punkte</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result-card/result-card.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4531015092689797346" datatype="html">
+        <source>Ihr Ergebnis</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4449384542895699505" datatype="html">
+        <source>Neuer Versuch</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5807550078064169126" datatype="html">
+        <source>Zur Übersicht Ihrer Resultate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8002842688992243146" datatype="html">
+        <source><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Sind Sie überrascht, dass der Algorithmus tendenziell genauer war als Sie?<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_HEADING_LEVEL4" ctype="x-h4" equiv-text="&lt;h4&gt;"/>Teilen Sie dieses Ergebnis!<x id="CLOSE_HEADING_LEVEL4" ctype="x-h4" equiv-text="&lt;/h4&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="329227609850182507" datatype="html">
+        <source><x id="START_HEADING_LEVEL3" ctype="x-h3" equiv-text="&lt;h3&gt;"/>Herzlichen Glückwunsch!<x id="CLOSE_HEADING_LEVEL3" ctype="x-h3" equiv-text="&lt;/h3&gt;"/><x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>Sie haben das neurale Netz geschlagen. Damit gehören Sie zu wenigen User, die das geschafft haben.<x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/><x id="START_HEADING_LEVEL4" ctype="x-h4" equiv-text="&lt;h4&gt;"/>Teilen Sie dieses Ergebnis!<x id="CLOSE_HEADING_LEVEL4" ctype="x-h4" equiv-text="&lt;/h4&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3194805448718830478" datatype="html">
+        <source>Erfahren Sie mehr über dieses Risiko-Assessment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8436548362526156296" datatype="html">
+        <source>Übersicht Ihrer Resultate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3046608599064482544" datatype="html">
+        <source>Oder versuchen Sie es noch einmal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6729913980077465456" datatype="html">
+        <source>Mehr erfahren</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4812379053373504980" datatype="html">
+        <source>Fordere den Algorithmus heraus!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/result/result.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9161616233746775153" datatype="html">
+        <source>Erklärvideo abspielen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tutorial/tutorial.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1715527181281145600" datatype="html">
+        <source>Überspringen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tutorial/tutorial.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
