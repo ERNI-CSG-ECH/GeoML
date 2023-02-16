@@ -6,6 +6,13 @@
     <span i18n>Erklärvideo abspielen</span>
   </div>
 </div>
+<mat-form-field class="tutorial__select-language" appearance="fill" *ngIf="!playVideo && isProduction">
+  <mat-select required [value]="locale" (selectionChange)="loadLanguage($event)">
+    <mat-option *ngFor="let language of languages" [value]="language.key">
+      {{language.value}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 <button mat-flat-button class="tutorial__button-skip" [ngClass]="{'background': playVideo}" (click)="skipped.emit()">
   <span i18n>Überspringen</span>
   <svg-icon name="arrow"></svg-icon>

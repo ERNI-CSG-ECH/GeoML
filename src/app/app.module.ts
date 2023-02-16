@@ -31,6 +31,8 @@ import { ExplanationComponent } from './components/explanation/explanation.compo
 import { ButtonComponent } from './components/button/button.component';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { MapComponent } from './components/map/map.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -41,6 +43,8 @@ export const MATERIAL_MODULES = [
   MatInputModule,
   MatProgressSpinnerModule,
   MatExpansionModule,
+  MatFormFieldModule,
+  MatSelectModule,
 ];
 export const FIREBASE_MODULES = [
   AngularFireModule.initializeApp(environment.firebase),

@@ -256,7 +256,21 @@
         <source>Überspringen</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/tutorial/tutorial.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3313528406596871463" datatype="html">
+        <source>Deutsch</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tutorial/tutorial.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8957931169022166336" datatype="html">
+        <source>Englisch</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tutorial/tutorial.component.ts</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
     </body>

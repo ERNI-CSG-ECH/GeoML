@@ -1,4 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { KeyValue } from '@angular/common';
+import { Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'geoml-tutorial',
@@ -6,11 +10,22 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./tutorial.component.scss'],
 })
 export class TutorialComponent implements OnInit {
+  isProduction = environment.production;
   playVideo = false;
+  languages: KeyValue<string, string>[] = [
+    { key: 'de', value: $localize`Deutsch` },
+    { key: 'en', value: $localize`Englisch` },
+  ];
 
   @Output() skipped = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(@Inject(LOCALE_ID) protected locale: string, private router: Router) {}
 
   ngOnInit(): void {}
+
+  loadLanguage(newLocale: MatSelectChange) {
+    if (this.isProduction) {
+      window.location.href = window.location.origin + '/' + newLocale.value + '/';
+    }
+  }
 }

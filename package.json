@@ -10,7 +10,8 @@
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "deploy": "ng deploy",
     "merge-i18n-all": "xliffmerge -p ./xliffmerge.json",
-    "extract-i18n": "ng extract-i18n --format xlf --output-path ./src/locale && npm run merge-i18n-all"
+    "extract-i18n": "ng extract-i18n --format xlf --output-path ./src/locale && npm run merge-i18n-all",
+    "preview": "ng build && firebase hosting:channel:deploy preview"
   },
   "private": true,
   "dependencies": {
