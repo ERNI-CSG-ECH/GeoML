@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { combineLatest, map, Observable } from 'rxjs';
-import { Check, InformationData, MOCK_DATA, Result, TaskData } from '../model/game';
+import { Check, InformationData, Result, TaskData, UserResultData } from '../model/game';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +15,9 @@ export class GameService {
   tutorialWatched = false;
 
   randomTasks$: Observable<string[]>;
+  uid?: string;
 
   constructor(
-    private http: HttpClient,
     private database: AngularFireDatabase,
     private storage: AngularFireStorage,
     private auth: AngularFireAuth
@@ -54,7 +53,8 @@ export class GameService {
       });
   }
 
-  getResult(): Result {
+  concludeGame(): Result {
+    this.saveResult();
     return {
       humanTotal: this.humanScore,
       botTotal: this.botScore,
@@ -108,11 +108,32 @@ export class GameService {
   private signIn(): Promise<boolean> {
     return this.auth
       .signInAnonymously()
-      .then(() => {
-        return true;
+      .then((data) => {
+        if (data.user) {
+          this.uid = data.user.uid;
+          return true;
+        }
+        return false;
       })
       .catch(() => {
         return false;
       });
+  }
+
+  private saveResult(): void {
+    if (this.uid) {
+      const userResult: UserResultData = {
+        uid: this.uid,
+        timestamp: new Date().toISOString(),
+        estimations: [],
+      };
+      this.checks.forEach((check) => {
+        userResult.estimations.push({
+          imageId: check.task,
+          estimation: check.humanGuess,
+        });
+      });
+      this.database.database.ref('results').push(userResult);
+    }
   }
 }

@@ -12,7 +12,7 @@ describe('ResultComponent', () => {
 
   beforeEach(async () => {
     const gameMock = {
-      getResult: () => {
+      concludeGame: () => {
         return { humanTotal: 0, botTotal: 0, checks: [] };
       },
     };

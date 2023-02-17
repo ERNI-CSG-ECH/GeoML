@@ -29,6 +29,16 @@ export interface TaskData {
   information: InformationData;
 }
 
+export interface UserResultData {
+  uid: string;
+  timestamp: string;
+  estimations: UserEstimationData[];
+}
+
+interface UserEstimationData {
+  imageId: string;
+  estimation: number;
+}
 
 export const MOCK_DATA = {
   humanTotal: 31,

@@ -21,7 +21,7 @@ export class ResultComponent implements OnInit {
   @ViewChild('results', { read: ElementRef }) resultCardEl!: ElementRef;
 
   constructor(private router: Router, private gameService: GameService) {
-    this.result = this.gameService.getResult();
+    this.result = this.gameService.concludeGame();
     this.imageSrc$ = combineLatest(
       this.result.checks.map((check) => {
         return this.gameService.loadImage(check.task, true);
