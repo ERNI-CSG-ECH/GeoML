@@ -13,8 +13,8 @@ export class TutorialComponent implements OnInit {
   isProduction = environment.production;
   playVideo = false;
   languages: KeyValue<string, string>[] = [
-    { key: 'de', value: $localize`Deutsch` },
     { key: 'en', value: $localize`Englisch` },
+    { key: 'de', value: $localize`Deutsch` },
   ];
 
   @Output() skipped = new EventEmitter<void>();
