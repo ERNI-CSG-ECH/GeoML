@@ -5,6 +5,11 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { from, map, mergeMap, Observable } from 'rxjs';
 import { Check, InformationData, Result, TaskData, UserResultData } from '../model/game';
 
+declare var gtag: (
+  arg0: string,
+  arg1: string,
+  arg2: { image_id: string; user_id: string; estimation: number; time: number }
+) => void;
 @Injectable({
   providedIn: 'root',
 })
@@ -15,13 +20,16 @@ export class GameService {
   tutorialWatched = false;
 
   randomTasks$: Observable<string[]>;
-  uid?: string;
+  uid = '0';
+
+  roundStart: number;
 
   constructor(
     private database: AngularFireDatabase,
     private storage: AngularFireStorage,
     private auth: AngularFireAuth
   ) {
+    this.roundStart = Date.now();
     this.randomTasks$ = this.loadRandomTasks();
   }
 
@@ -38,6 +46,14 @@ export class GameService {
 
         this.humanScore += humanPoints;
         this.botScore += botPoints;
+
+        const timeNeeded = Date.now() - this.roundStart;
+        gtag('event', 'USER_ESTIMATION', {
+          image_id: taskId,
+          user_id: this.uid,
+          estimation: guess,
+          time: timeNeeded,
+        });
 
         const mapped: Check = {
           task: taskId,
@@ -79,7 +95,13 @@ export class GameService {
   }
 
   loadImage(task: string, checked: boolean): Promise<string> {
-    return this.storage.storage.ref(`images/${task}_${checked ? 'result' : 'initial'}.png`).getDownloadURL();
+    return this.storage.storage
+      .ref(`images/${task}_${checked ? 'result' : 'initial'}.png`)
+      .getDownloadURL()
+      .then((uri) => {
+        this.roundStart = Date.now();
+        return uri;
+      });
   }
 
   watchedTutorial(): void {
