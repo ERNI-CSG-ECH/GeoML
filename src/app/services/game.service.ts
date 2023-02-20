@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { combineLatest, map, Observable } from 'rxjs';
+import { from, map, mergeMap, Observable } from 'rxjs';
 import { Check, InformationData, Result, TaskData, UserResultData } from '../model/game';
 
 @Injectable({
@@ -87,20 +87,23 @@ export class GameService {
   }
 
   private loadRandomTasks(): Observable<string[]> {
-    return combineLatest([this.signIn(), this.database.database.ref('data').get()]).pipe(
-      map(([signedIn, snapshot]) => {
+    return from(this.signIn()).pipe(
+      mergeMap((signedIn) => {
         if (signedIn) {
-          const randomTasks: string[] = [];
-          const allTasks = snapshot.toJSON() as { [id: string]: TaskData };
-          const numberOfTasks = Object.keys(allTasks).length;
-          for (let i = 0; i < 5; i++) {
-            const randomIdx = Math.floor(Math.random() * numberOfTasks);
-            randomTasks.push(Object.keys(allTasks)[randomIdx]);
-          }
-          return randomTasks;
+          return this.database.database.ref('data').get();
         } else {
           throw new Error('Could not sign in anonymously');
         }
+      }),
+      map((snapshot) => {
+        const randomTasks: string[] = [];
+        const allTasks = snapshot.toJSON() as { [id: string]: TaskData };
+        const numberOfTasks = Object.keys(allTasks).length;
+        for (let i = 0; i < 5; i++) {
+          const randomIdx = Math.floor(Math.random() * numberOfTasks);
+          randomTasks.push(Object.keys(allTasks)[randomIdx]);
+        }
+        return randomTasks;
       })
     );
   }
