@@ -33,6 +33,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { MapComponent } from './components/map/map.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { SafePipeModule } from 'safe-pipe';
 
 export const MATERIAL_MODULES = [
   MatCardModule,
@@ -75,6 +76,7 @@ export const FIREBASE_MODULES = [
     BrowserAnimationsModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
+    SafePipeModule,
     ...MATERIAL_MODULES,
     ...FIREBASE_MODULES,
   ],

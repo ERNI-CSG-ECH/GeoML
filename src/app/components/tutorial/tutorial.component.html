@@ -1,4 +1,5 @@
-<iframe *ngIf="playVideo" width="380" height="680" src="https://www.youtube.com/embed/ajF-6UGMbiE"
+<iframe *ngIf="playVideo" width="380" height="680"
+  [src]="(locale==='de'?'https://www.youtube.com/embed/ajF-6UGMbiE':'https://www.youtube.com/embed/jC7yBJkkc50') | safe"
   title="GeoML Tutorial" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <div *ngIf="!playVideo" class="tutorial">
   <div class="tutorial__button-play" (click)="playVideo=true">
